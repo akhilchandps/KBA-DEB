@@ -41,7 +41,7 @@ nav{
 
 .div3{
     text-align: center;
-    color: rgb(218, 77, 218);
+    color: rgb(9, 71, 112);
     background-color: #d7bde2;
     padding: 50px;
 }
@@ -66,6 +66,15 @@ nav{
 }
 .div5 .col5 h3{
     text-align: center;
+}
+.div5 .col5 input{
+
+    background-color: rgb(139, 42, 139);
+    color: white;
+    font-weight: 600;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
 }
 
 

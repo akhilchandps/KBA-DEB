@@ -1,0 +1,59 @@
+body{
+    background-color: #d2b4de;
+}
+h1{
+    text-align: center;
+    color: #ac52d3;
+}
+.container{
+    width: 400px;
+   margin: auto;
+    background-color: #fdfefe;
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 30px;
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
+
+}
+ .container form input{
+
+    width: 400px;
+    height: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px rgb(206, 204, 204) solid;
+    outline: none;
+}
+.container form textarea{
+
+    width: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 110px;
+    border: 1px rgb(206, 204, 204) solid;
+    outline: none;
+}
+select{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 400px;
+    border: 1px rgb(206, 204, 204) solid;
+}
+label{
+    font-weight: 600;
+}
+form .btnn input{
+    background-color:#ac52d3;;
+    height: 30px;
+    outline: none;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+    border: 1px rgb(172, 166, 166) solid;
+}
