@@ -1,0 +1,46 @@
+.maindiv{
+    border-width: 7px;
+    border-color: black;
+    border-style: solid;
+    width: 400px;
+    height: 700px;
+  
+    
+ 
+
+}
+.col{
+    width: 120px;
+    height: 130px;
+  
+  
+    
+
+}
+p{
+    font-size: 20px;
+}
+.col1{
+    background-color: rgb(59, 236, 236);
+    position: fixed;
+ 
+}
+.col2{
+    background-color: brown;
+}
+.col3{
+    background-color: blueviolet;
+    position: absolute;
+    top: 80px;
+
+}
+.col4{
+    background-color: blue;
+    position: sticky;
+    top: 70px;
+    
+}
+
+h1{
+    position: fixed;
+}

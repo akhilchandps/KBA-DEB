@@ -1,0 +1,51 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+nav .col2  a{
+    margin-right: 50px;
+    text-decoration: none;
+    font-size: 20px;
+  
+    padding: 9px;
+    
+}
+nav .col2  a:hover{
+    background-color: #1f618d;
+    border-radius: 5px;
+    color: white;
+}
+
+nav .col2{
+    position: relative;
+    left: 500px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  
+    
+}
+nav{
+  box-shadow: 3px 3px 8px rgb(194, 192, 192);
+    width: 100%;
+   
+    
+}
+.row .col{
+    width: 300px;
+    text-align: center;
+    margin: 40px;
+   
+}
+.row{
+    display: flex;
+    justify-content: center;
+}
+.row .col i{
+    color: rgb(132, 79, 182);
+    border-radius: 50%;
+    border-width: 4px;
+    border-color: blueviolet;
+    border: 2px solid violet;
+    padding: 15px;
+
+}
