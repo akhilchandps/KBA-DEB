@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Login</title>
+</head>
+<body>
+
+  <nav class="flex justify-between p-4 bg-slate-200">
+
+    <div>
+      <img src="kbalogo.png" alt="" class="w-10" >
+    </div>
+     
+      
+      <div >
+        <a href="homepage_htmlfile.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Home</a>
+        <a href="Course.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Course</a>
+        <a href="Addcourse.html"class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Add Course</a>
+        <a href="updateCourse.html"class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Update Course</a>
+        <a href="contactus.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Contact</a>
+        <a href="login.html"  class="bg-white text-blue-600 mx-3 p-2 rounded-md">Login</a>
+        <a href="signup.html"  class="hover:text-blue-600 mx-3 p-2 rounded-md">Sign Up</a>
+      </div>
+  
+    </nav>
+
+  <div class="flex  justify-center">
+
+
+  <div>
+
+    <form class=" p-8 mx-8 text-normal py-5 bg-sky-400 text-white max-w-96 rounded-md  shadow-md shadow-slate-500 mt-20 "> 
+      <h1 class="text-3xl indent-8 mb-4 text-white font-bold">LOGIN</h1>
+        <label class="text-white"><b>Email:</b></label>
+        <div class="my-3">
+          <input type="email" placeholder="Enter Email" class="w-full h-8 px-3 hover:bg-sky-700 rounded-md" required>
+        </div>
+
+        <label class="text-white"><b>Password:</b></label>
+        <div class="my-3" >
+          <input type="password" placeholder="Enter password" class="w-full h-8 px-3 rounded-md focus:ring-2 focus:ring-red-800" required>
+        </div>
+      
+
+         <div class="float-right">
+            <input type="submit" class="cursor-pointer  focus:ring-1 rounded-md  text-white bg-slate-500  px-3 py-1 border-2 border-solid  rounded-md border-orange-600" value="Login">
+         </div>
+         <ul >
+            <li class="mt-10"><a href="" class="text-white">Forgot Password?</a></li><br>
+            <li class="text-white">Don't Have an Account? <a href="signup.html" class="text-slate-900" >Sign Up</a></li>
+         </ul>
+    </form>
+  </div>
+
+</div>
+</body>
+</html>

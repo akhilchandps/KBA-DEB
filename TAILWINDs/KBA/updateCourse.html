@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Course</title>
+</head>
+<body>
+
+    <nav class="flex justify-between p-4 bg-slate-200">
+
+        <div>
+          <img src="kbalogo.png" alt="" class="w-10" >
+        </div>
+         
+          
+          <div >
+            <a href="homepage_htmlfile.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Home</a>
+            <a href="Course.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Course</a>
+            <a href="Addcourse.html"class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Add Course</a>
+            <a href="updateCourse.html"class="bg-white text-blue-600 mx-3 p-2 rounded-md">Update Course</a>
+            <a href="contactus.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Contact</a>
+            <a href="login.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Login</a>
+            <a href="signup.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Sign Up</a>
+          </div>
+      
+        </nav>
+
+        <div class="flex justify-center  m-5   " >
+          
+
+     
+            <form class="flex-col flex items-center bg-sky-400 text-white p-4 w-1/3 rounded-md text-white">
+
+                <div class="my-3">
+                    <h1 class="text-3xl font-bold">Update Course</h1>
+                </div>
+               
+                <labe>Course Name:</label>
+                    <div class="my-2">
+                        <input type="text" class="py-1 px-3 rounded-md w-80" required  placeholder="Course name">
+                    </div>
+              
+                 <labe>Course Type:</label>
+                    <div class="my-2">
+                        <select name="" id="" class="text-slate-600 py-1 px-3 rounded-md" required>
+                            <option value="">Select</option>
+                            <option value="">Hybrid</option>
+                        </select>
+                    </div>
+                    <labe>Description:</label>
+                        <div class="my-2  ">
+                            <textarea  required class="pr-28  px-3 pb-28 rounded-md outline-none focus:ring-2 focus:border-cyan-900"></textarea>
+                        </div>
+                        <labe>Price:</label>
+                            <div>
+                                <select name="" id="" class="text-slate-600 py-1 px-3 rounded-md">
+                                    <option value="">Rs 15000</option>
+                                    <option value="">Rs 25000</option>
+                                </select>   
+
+                            </div>
+                        <div class="my-3">
+                            <button type="submit" class="w-80 bg-white text-cyan-600 rounded-full p-1">updateCourse</button>
+                        </div>
+                    
+                        </form>
+        </div>
+     
+</body>
+</html>

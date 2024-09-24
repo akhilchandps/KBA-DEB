@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="flex justify-between p-4 bg-slate-200">
+
+        <div>
+          <img src="kbalogo.png" alt="" class="w-10" >
+        </div>
+         
+          
+          <div >
+            <a href="homepage_htmlfile.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Home</a>
+            <a href="Course.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Course</a>
+            <a href="Addcourse.html"class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Add Course</a>
+            <a href="updateCourse.html"class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Update Course</a>
+            <a href="contactus.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Contact</a>
+            <a href="login.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Login</a>
+            <a href="signup.html"  class="bg-white text-blue-600 mx-3 p-2 rounded-md">Sign Up</a>
+          </div>
+      
+        </nav>
+
+        
+    <div class="flex justify-center  ">
+        <form class="w-96 bg-sky-400 shadow-md shadow-slate-500 p-8 rounded-md my-5 text-white " >
+            <h1 class="mb-2 font-bold text-3xl text-center">SIGN UP</h1>
+            <label for="">Name</label>
+            <div>
+                <input type="text" required class=" focus:outline-none focus:ring-2 focus:sky-600 focus:bg-slate-200 px-2 text-md my-3 w-full h-8 rounded-md" placeholder="enter name">
+            </div>
+            <label for="">Email</label>
+            <div>
+                <input type="email" required class="ocus:bg-slate-200 px-2 text-md my-3 w-full h-8 rounded-md" placeholder="enter password">
+            </div>
+            <label for="">Password</label>
+            <div>
+                <input type="password" required class="ocus:bg-slate-200 px-2 text-md my-3 w-full h-8 rounded-md"  placeholder="enter password">
+            </div>
+            <label for="">Person</label>
+            <div>
+             <select name="" id="" class="my-3 w-full py-2 text-blue-600">
+                <option value="">Admin</option>
+                <option value="">User</option>
+             </select>
+            </div>
+            <div>
+                <button type="submit" class="bg-slate-500 px-3 py-1 my-2 rounded-md hover:bg-white hover:text-black">Sign Up</button>
+            </div>
+            <div class="text-center">
+                <p>Already have an Account?<a href="login.html" class="text-blue-600 ml-3">login</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

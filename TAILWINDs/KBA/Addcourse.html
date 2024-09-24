@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Add Course</title>
+</head>
+<body>
+    <nav class="flex justify-between p-4 bg-slate-200">
+
+        <div>
+          <img src="kbalogo.png" alt="" class="w-10" >
+        </div>
+         
+          
+          <div >
+            <a href="homepage_htmlfile.html"  class=" hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Home</a>
+            <a href="Course.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Course</a>
+            <a href="Addcourse.html"class="bg-white text-blue-600 mx-3 p-2 rounded-md">Add Course</a>
+            <a href="updateCourse.html"class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Update Course</a>
+            <a href="contactus.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Contact</a>
+            <a href="login.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Login</a>
+            <a href="signup.html"  class="hover:bg-white text-blue-600 mx-3 p-2 rounded-md">Sign Up</a>
+          </div>
+      
+        </nav>
+
+    <div class="flex justify-center">
+        <div class=" p-12 my-5 bg-sky-400 text-white shadow-2xl text-white rounded-md">
+
+     
+        <h1 class="text-center text-3xl font-semibold">Add Course</h1>
+        <form action="" class=" text-lg "> 
+            <label class="font-normal" for="">Course Name</label>
+            <div>
+                <input type="text" class="py-1 px-3  w-96 my-2 rounded-md" required  placeholder="course name">
+            </div>
+            <label class="font-normal" for="">Course ID</label>
+            <div>
+                <input type="text" class="py-1 px-3 w-96 my-2 rounded-md" required  placeholder="course ID">
+            </div>
+            <label class="font-normal" for="">Course Type</label>
+            <div>
+                <select class="py-1 px-3 my-2 text-slate-500 rounded-md" >
+                    <option value="">Select</option>
+                    <option value="">Self Placed</option>
+                </select>
+            </div>
+            <label class="font-normal" for="">Price</label>
+            <div>
+                <select class="py-1 px-3 text-slate-500 rounded-md">
+                    <option value="">50000</option>
+                  
+                </select>
+            </div>
+            <label class="font-normal" for="">Description</label>
+            <div>
+              <textarea class="w-96 h-44 rounded-md" name="" id=""></textarea>
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="bg-white text-black px-3 py-1 rounded-md hover:bg-sky-600 hover:text-white">Add Book</button>
+            </div>
+        </form>
+    </div>
+
+
+    </div>
+</body>
+</html>
