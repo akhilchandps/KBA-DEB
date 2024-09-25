@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="list">
+  
+   </div>
+ <div id="drop">
+   
+ </div>
+
+ <div id="result">
+
+ </div>
+    <div id="type"></div>
+ 
+  <div id="para">
+  </div>
+
+   
+  <div id="para2">
+  </div>
+  <div id="para3">
+  </div>
+  <div id="drop2">
+  </div>
+  <div id="kba">
+  </div>
+  <div id="para4">
+  </div>
+  <div id="substring">
+
+
+  </div>
+  <div id="substr">
+
+  </div>
+  <div id="drop3">
+  </div>
+
+  <div id="para5">
+   
+  </div>
+  <div id="block">
+
+  </div>
+  <div id="str">
+
+  </div>
+
+    <script>
+       let ul= document.createElement("ul")
+     document.getElementById("list").append(ul)
+       let li1=document.createElement("li")
+       let li2=document.createElement("li")
+       let li3=document.createElement("li")
+       let li4=document.createElement("li")
+   
+       li1.innerHTML="drishyam" 
+       li2.innerHTML="ARM"
+       li3.innerHTML="Marco"
+       li4.innerHTML="Barroz"
+       ul.appendChild(li1)
+       ul.appendChild(li2)
+       ul.appendChild(li3)
+       ul.appendChild(li4)
+    
+      </script>
+
+
+<script>
+   
+      // Create a dropdown for programming language classes offered on html page using javascript.
+    let dropdown=document.createElement("select")
+ document.getElementById("drop").appendChild(dropdown)
+
+    let option1=document.createElement("option")
+    let option2=document.createElement("option")
+    let option3=document.createElement("option")
+    option1.innerHTML="javascript"
+    option2.innerHTML="python"
+    option3.innerHTML="c++"
+
+    dropdown.appendChild(option1)
+    dropdown.appendChild(option2)
+    dropdown.appendChild(option3)
+</script>
+
+<script>
+    // Print your full name storing fname & lname. Print in Uppercase.
+let fname ="akhil chand"
+let lname="ps"
+
+let FULLNAME=document.createElement("h4")
+FULLNAME.innerHTML=`${fname.toUpperCase()}&nbsp;${lname.toUpperCase()}`
+document.getElementById("para5").appendChild(FULLNAME)
+</script>
+
+
+<script>
+   // Compare “Hello World” & “hEllO World” and display the result & its type.
+
+let str1 = "Hello World";
+let str2 = "hEllO World";
+
+let comparisonResult = (str1 === str2);
+
+document.getElementById("result").innerHTML="<br>Comparison result:"+ comparisonResult;
+
+document.getElementById("type").innerHTML="<br>Type:"+typeof comparisonResult;
+
+</script>
+
+<script>
+// Print this statement “ I am ___ yrs of old and my brother is 10 yrs older to me. He is now __ years old.”
+
+let p=document.createElement("p");
+p.innerHTML="I am ___ yrs of old and my brother is 10 yrs older to me. He is now __ years old"
+document.getElementById("para").appendChild(p);
+
+</script>
+
+<script>
+// Consider this statement “ My name is ________.(declaring fname & lastname in uppercase). I live in ____(uppercase).
+let firstname="akhil chand"
+let lastname="ps"
+let place="trivandrum"
+let p1=document.createElement("p")
+p1.innerHTML=`My name is ${firstname.toUpperCase()}. I live in ${place.toUpperCase()}`
+document.getElementById("para2").appendChild(p1)
+</script>
+
+<script>
+
+// “You can study anything if you have a will to do it”.Take the substrings “You can study”, “you”,”will”,”do it” and combine as a sentence.
+
+let p4="You can study anything if you have a will to do it"
+let subs1=document.createElement("p")
+
+subs1.innerHTML=`${p4.substring(0,13)} ${p4.substring(26,29)} ${p4.substring(37,41)} ${p4.substring(45,47)} ${p4.substring(48,51)}`
+
+document.getElementById("para3").appendChild(subs1)
+</script>
+
+<script>
+// Create a dropdown for list of cakes and print the value of second option.
+
+let select2=document.createElement("select")
+document.getElementById("drop2").appendChild(select2)
+let op1=document.createElement("option")
+let op2=document.createElement("option")
+let op3=document.createElement("option")
+op1.innerHTML="plumcake"
+op2.innerHTML="blackforest"
+op3.innerHTML="redvelvet"
+select2.appendChild(op1)
+select2.appendChild(op2)
+select2.appendChild(op3)
+</script>
+
+
+<script>
+// On the KBA site you created add a radio button showing your experience on KBA(like good, bad, average)
+
+let inpt1 = document.createElement("input")
+let label1= document.createElement("label")
+let label2= document.createElement("label")
+let label3= document.createElement("label")
+let inpt2 = document.createElement("input")
+let inpt3 = document.createElement("input")
+
+label1.innerHTML="good"
+label1.appendChild(inpt1)
+inpt1.name="option"
+inpt1.type="radio"
+
+label2.innerHTML="bad"
+inpt2.name="option"
+label2.appendChild(inpt2)
+inpt2.type="radio"
+
+label3.innerHTML="avg"
+inpt3.name="option"
+label3.appendChild(inpt3)
+inpt3.type="radio"
+
+document.getElementById("kba").append(label1)
+document.getElementById("kba").append(label2)
+document.getElementById("kba").append(label3)
+</script>
+
+
+
+<script>
+// Program to print a para about yourself using createElement() , textContent & append child.
+
+p5=document.createElement("p")
+p5.textContent="i am Akhil chand Ps ,iam recent graduate MCA student, i have a good knowledge in css,html,javascript"
+document.getElementById("para4").appendChild(p5)
+
+</script>
+
+<script>
+// Print the string “MongoDB is a decentralised distributed ledger” using substring/substr.\\
+
+
+let para= "MongoDB is a decentralised distributed ledger"
+let h1=document.createElement("h1")
+h1.innerHTML="SUBSTRING"
+document.getElementById("substring").appendChild(h1)
+let substrings=document.createElement("p");
+substrings.innerHTML=`${para.substring(0,45)}`
+document.getElementById("substring").appendChild(substrings)
+</script>
+
+<script>
+// Create a dropdown for programming language classes offered on html page using javascript.
+
+let drop3= document.createElement("select")
+
+let opp1=document.createElement("option")
+opp1.innerHTML="AGNICHIRAKUKAL "
+let opp2=document.createElement("option")
+opp2.innerHTML="NEERMATHALAM POOTHA KALAM"
+let opp3=document.createElement("option")
+opp3.innerHTML="ORU DESATHINTE KATHA"
+
+document.getElementById("drop3").appendChild(drop3)
+drop3.appendChild(opp1)
+drop3.appendChild(opp2)
+drop3.appendChild(opp3)
+</script>
+
+<script>
+// “MongoDB is a decentralised distributed ledger . MongoDB can eliminate centralisation.” Replace MongoDB with Blockchain
+
+let str = '<br>MongoDB is a decentralised distributed ledger . MongoDB can eliminate centralisation';
+   document.write(str);
+   let result = str.replaceAll("MongoDB", "Blockchain");
+    document.write("<br><br>", result);
+</script>
+
+<script>
+
+// Consider these two statements “I like to play video games.” “I don’t like Hide & seek”. Change 'like' to 'don't like'.
+let change= document.createElement("p")
+let strr1 = "I like to play video games."
+let strr2 = " I don’t like Hide & seek"
+let strr = strr1.concat(strr2)
+
+let results = strr.replace("like","don't like");
+change.innerHTML=`${results}`
+document.getElementById("str").appendChild(change)
+</script>
+
+
+<script>
+   // Program to find whether the person is eligible for voting using ternary operator
+
+    let num=20
+    num>18?document.write("person eligible to vote"):document.write("<br>Not eligible to vote");
+</script>
+
+
+ 
+</body>
+</html>
