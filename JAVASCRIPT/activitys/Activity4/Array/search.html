@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+a=[8,2,6,7,3,1]
+let element =7
+let found = false;
+for(let i=0; i<a.length; i++ ){
+    if (element === a[i]) {
+        document.write(`Element ${element} is found`);
+        found = true;
+        break; 
+    }
+}
+if (!found) {
+    document.write(`Element ${element} is not found`);
+}
+    </script>
+</body>
+</html>

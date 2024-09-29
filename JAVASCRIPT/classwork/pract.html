@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+            let a=[[],[],[]]
+        for( let i=0; i<3; i++){
+            document.write("<br>")
+            for( let j=0; j<4; j++){
+                
+               document.write(a[i][j]=i+1)
+            }
+
+            
+        }
+
+        let n=2
+        let s=0
+        let b=[[],[],[]]
+        for( let i=0; i<3; i++){
+            document.write("<br>")
+            for( let j=0; j<4; j++){
+                s=s+n
+                document.write("  ")
+               document.write(b[i][j]=s)
+            }
+
+            
+        }
+      
+        let c=[[],[],[]]
+        for( let i=0; i<3; i++){
+            document.write("<br>")
+            for( let j=0; j<4; j++){
+                document.write("  ")
+              c[i][j]=a[i][j]+b[i][j]
+               document.write(c[i][j])
+            }
+
+            
+        }
+        document.write("<br>")
+        let d=[[],[],[]]
+        for( let i=0; i<4; i++){
+            document.write("<br>")
+            for( let j=0; j<3; j++){
+                document.write("  ")
+              d[j][i]=c[j][i]
+               document.write(d[j][i])
+            }
+
+            
+        }
+    </script>
+</body>
+</html>

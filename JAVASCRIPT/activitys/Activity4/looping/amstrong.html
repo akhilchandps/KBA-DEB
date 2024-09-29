@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        n=153
+        x=n
+        s=0
+        for(;n>0;n=Math.floor(n/10)){
+            m=n%10
+            s=s+(m*m*m)
+        }
+        if(x==s){
+            document.write(`${x} is amstrong`)
+        }
+        else{
+            document.write(`no is not amstrong`)
+        }
+    </script>
+</body>
+</html>

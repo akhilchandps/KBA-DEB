@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+let a = [8,2,6,7,3,1];
+let min = a[0]; 
+let max = a[0]; 
+for (let i=1; i<a.length; i++) {
+    if (a[i]<min) { 
+        min = a[i]; 
+    }
+    if (a[i]>max) { 
+        max=a[i]; 
+    }
+}
+
+document.write(`Minimum element is ${min} <br>`);
+document.write(`Maximum element is ${max}`);
+
+    </script>
+</body>
+</html>
