@@ -6,18 +6,17 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Defining and using function</h1>
+    <p>Open your browser to see theoutput</p>
+
     <script>
-let s=0
-for(let i=0;i<3;i++){
-    document.write("<br>")
-    for(let j=0; j<3-i;j++){
-       s=s+2
-       document.write(" ")
-       document.write(s)
-    }
-}
+        function add(a,b){
+            return a+b
+        }
 
+       let sum=add(10,5)
 
+       document.write("sum is=",sum)
     </script>
 </body>
 </html>
