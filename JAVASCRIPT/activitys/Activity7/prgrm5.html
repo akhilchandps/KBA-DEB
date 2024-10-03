@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <input type="text" id="first" placeholder="enter frst number">
+        </div>
+        <div>
+            <input type="text" id="second" placeholder="enter second number">
+        </div>
+
+        <div>
+            <button onclick="performCalculation()">log</button>
+        </div>
+
+        <div>
+            <h4 id="result"></h4>
+        </div>
+    </div>
+  
+
+
+    <script>
+        function performCalculation(){
+           let firstnum=Number(document.getElementById("first").value)
+           let secondnum=Number(document.getElementById("second").value)
+           let sum=firstnum+secondnum;
+            if(sum%2==0){
+            document.getElementById("result").innerHTML=`The ${sum} is even`                  
+            }
+            else{
+                document.getElementById("result").innerHTML=`The ${sum} is odd`
+            }
+        }
+     
+    </script>
+</body>
+</html>

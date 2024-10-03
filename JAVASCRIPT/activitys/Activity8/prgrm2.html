@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+        function Book(title, author, year) {
+    this.title = title;
+    this.author = author;
+    this.year = year;
+
+    this.getDetails = function() {
+        console.log(`Title: ${this.title}, Author: ${this.author}, Year: ${this.year}`);
+    };
+}
+
+
+const book1 = new Book('Learning How to Fly', 'A.P.J. Abdul Kalam', 2016);
+const book2 = new Book('1984', 'George Orwell', 1949);
+
+book1.getDetails();
+book2.getDetails();
+    </script>
+</body>
+</html>

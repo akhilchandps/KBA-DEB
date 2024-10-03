@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1 id="originaPerson"></h1>
+
+<h1 id="modifiedPerson"></h1>
+    <script>
+   const person={
+        firstName:"john",
+        lastName:"Wick",
+        age:30,
+        eyecolor:"blue"
+    }
+
+    //displaying original object
+document.getElementById("originaPerson").innerHTML= `Original Person object:${JSON.stringify(person)}`
+
+//create copy of object person 
+
+document.getElementById("originaPerson").innerHTML= `Original Person object:${JSON.stringify(person)}`
+
+
+//change value of x
+const x = person;
+x.age=10
+
+    //displaying modified object modifiedPerson
+
+document.getElementById("modifiedPerson").innerHTML= `Modified Person object:${JSON.stringify(person)}`
+
+
+    </script>
+ 
+</body>
+</html>

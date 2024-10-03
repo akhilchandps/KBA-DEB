@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align: center;">
+    <h1>Reading Input Data from HTML using functions</h1>
+
+    <label for="nameInput">Enter Your Name</label>
+    <input type="text" id="nameInput">
+    <button onclick="showName()" >click</button>
+
+    <h2 id="output"></h2>
+
+    <script>
+        function showName(){
+      let name= document.getElementById("nameInput").value;
+        
+       document.getElementById("output").textContent=`Pandi Karibara pola+$%% ${name}`
+
+       
+
+        }
+
+        
+    </script>
+</body>
+</html>

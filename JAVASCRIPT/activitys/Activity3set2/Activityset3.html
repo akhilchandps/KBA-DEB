@@ -129,7 +129,8 @@ let temperature = 25;
   let a=2;
  let b=3;
  let c=1;
- let result=b**2 - 4*a*c;
+ let result=b**2 - 4*a*c
+ 
  document.write("<br>"+result)
  if(result>0){
   
@@ -137,9 +138,17 @@ let temperature = 25;
      let num2=(-b-Math.sqrt(result))/(2*a)
      document.write("<br> root  ",+num1)
      document.write("<br>root  ",+num2)
- }else{
-     document.write("<br>roots are imaginary")
  }
+ else if(result==0){
+    
+    num1=(-b) / (2*a)
+    num2=(-b) / (2*a)
+    document.write("<br>root are real and identical <br> roo1:",num1,"<br>root2: ",num2)
+ }
+ else{
+    document.write("<br> roots are complex")
+ }
+ document.write("<br><br>")
  </script>
 
 

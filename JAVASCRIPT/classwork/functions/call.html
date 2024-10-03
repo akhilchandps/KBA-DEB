@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Call method in functions</h1>
+    <p>Check the console for output</p> 
+
+
+
+<script>
+    function greet(greeting){
+
+        console.log(greeting + ',' + this.name);
+        
+}
+
+let person ={
+    name:"akhil",
+    age:25
+}
+//call method
+greet.call(person,"Hello")
+
+
+
+const persons={
+   fullName:function(city,country){
+    console.log(this.firstName + " " +this.lastName+","+city+","+country );
+    
+   }
+}
+
+person1={
+    firstName:"Akhil Chand",
+    lastName:"PS"
+}
+
+person2={
+    firstName:"John",
+    lastName:"Wick"
+}
+
+person3={
+    firstName:"Suma",
+    lastName:"MJ"
+}
+
+//bound
+const boundFunction=persons.fullName.bind(person3,"Pathanamthitta","india");
+
+persons.fullName.call(person1,"Trivandrum","india");
+
+persons.fullName.apply(person2, ["Newyork","USA"]);
+
+boundFunction();
+//apply method
+
+
+
+</script>
+</body>
+</html>
