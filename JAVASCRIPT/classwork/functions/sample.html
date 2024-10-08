@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" placeholder="Enter task" id="tasks">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="Ulist"></ul>
+    </div>
+    <script>
+   loadTasks()
+        function addTask(){
+
+      let taskList=[]
+      
+      let Task= document.getElementById("tasks")
+      Taskvalue=Task.value 
+      let Ulists= document.getElementById("Ulist")
+     let List = document.createElement("li")
+
+     if(Task == ""){
+        alert("please enter the task")
+     }
+     else{
+        List.textContent=Taskvalue
+        Ulists.appendChild(List)
+        Ulists.querySelectorAll("li").forEach((item)=>{
+            taskList.push(item.textContent)
+        })
+
+        localStorage.setItem("tasks",JSON.stringify(taskList))
+       
+
+     }
+    
+
+        }
+
+   
+        function loadTasks(){
+            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            let Ulists = document.getElementById("Ulist");
+
+            // Loop through tasks and add each task to the list
+            tasks.forEach((task) => {
+                let List = document.createElement("li");
+                List.textContent = task;
+                Ulists.appendChild(List);
+            });
+        }
+
+     
+     
+    </script>
+</body>
+</html>

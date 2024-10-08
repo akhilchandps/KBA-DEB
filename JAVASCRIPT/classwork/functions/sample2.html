@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" placeholder="Ebter a Task" id="task">
+        <input type="text" placeholder="Enter priority high" id="priority">
+        <button onclick="addTask()">Add task</button>
+        <ul id="ulist"></ul>
+    </div>
+
+    <script>
+   function addTask (){
+
+        let TaskIn = document.getElementById("task");
+        taskValue=TaskIn.value
+        let PriorityIn=document.getElementById("priority")
+        priorityValue=PriorityIn.value
+      
+       let listing=document.createElement("li")
+        listing.textContent=taskValue
+        let deletes=document.createElement("button")
+        deletes.textContent="DELETE"
+       let edits=document.createElement("button")
+        edits.textContent="EDIT"
+       let completed=document.createElement("button")
+        completed.textContent="COMPLETED"
+
+        listing.appendChild(deletes)
+        listing.appendChild(edits)
+
+        document.getElementById("ulist").appendChild(listing)
+
+        deletes.onclick=function(){
+            document.getElementById("ulist").removeChild(listing)
+        }
+        edits.onclick=function(){
+          let  update=prompt("/task",taskValue)
+           taskValue=update
+           TaskIn.value=""
+           PriorityIn.value=""
+           listing.textContent=`${taskValue}`
+           listing.appendChild(deletes)
+           listing.appendChild(edits)
+           
+           
+           
+            
+        }
+
+       
+    }
+     
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <style>
+        /* Basic styling for category colors and completed tasks */
+        .category-food {
+            color: green;
+        }
+        .category-transport {
+            color: blue;
+        }
+        .category-entertainment {
+            color: purple;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        #expenses-list li button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+
+    <label for="description">Expense Description:</label>
+    <input type="text" id="description">
+
+    <label for="amount">Expense Amount:</label>
+    <input type="text" id="amount">
+
+    <label for="category">Expense Category (1-Food, 2-Transport, 3-Entertainment):</label>
+    <input type="text" id="category">
+
+    <button onclick="addExpense()">Add Expense</button>
+
+    <ul id="expenses-list"></ul>
+
+    <script>
+        // Array to keep track of expenses
+        let expenses = [];
+
+        // Function to add an expense
+        function addExpense() {
+            // Get values from input fields
+            let description = document.getElementById("description").value.trim();
+            let amount = parseFloat(document.getElementById("amount").value);
+            let category = parseInt(document.getElementById("category").value);
+
+            // Input validation
+            if (!description || isNaN(amount) || isNaN(category) || amount <= 0 || category < 1 || category > 3) {
+                alert("Please enter valid expense details.");
+                return;
+            }
+
+            // Create an expense object
+            let expense = {
+                description: description,
+                amount: amount,
+                category: category,
+                completed: false
+            };
+
+            // Add expense to the array
+            expenses.push(expense);
+
+            // Reset input fields
+            document.getElementById("description").value = '';
+            document.getElementById("amount").value = '';
+            document.getElementById("category").value = '';
+
+            // Update the display of expenses
+            displayExpenses();
+        }
+
+        // Function to display expenses
+        function displayExpenses() {
+            let expensesList = document.getElementById("expenses-list");
+            expensesList.innerHTML = '';  // Clear the list before updating
+
+            expenses.forEach((expense, index) => {
+                // Create list item element for the expense
+                let listItem = document.createElement("li");
+
+                // Set the content of the list item
+                listItem.innerHTML = `${expense.description} - $${expense.amount.toFixed(2)} - ${getCategoryName(expense.category)}`;
+
+                // Add appropriate class based on the category
+                listItem.classList.add(getCategoryClass(expense.category));
+
+                // If the expense is marked as completed, add 'completed' class
+                if (expense.completed) {
+                    listItem.classList.add("completed");
+                }
+
+                // Add buttons for complete, edit, and delete functionality
+                let completeButton = document.createElement("button");
+                completeButton.innerHTML = "Complete";
+                completeButton.onclick = function() {
+                    markAsCompleted(index);
+                };
+
+                let editButton = document.createElement("button");
+                editButton.innerHTML = "Edit";
+                editButton.onclick = function() {
+                    editExpense(index);
+                };
+
+                let deleteButton = document.createElement("button");
+                deleteButton.innerHTML = "Delete";
+                deleteButton.onclick = function() {
+                    removeExpense(index);
+                };
+
+                // Append buttons to the list item
+                listItem.appendChild(completeButton);
+                listItem.appendChild(editButton);
+                listItem.appendChild(deleteButton);
+
+                // Append the list item to the ul element
+                expensesList.appendChild(listItem);
+            });
+        }
+
+        // Function to get the category name based on the number
+        function getCategoryName(category) {
+            switch (category) {
+                case 1:
+                    return "Food";
+                case 2:
+                    return "Transport";
+                case 3:
+                    return "Entertainment";
+                default:
+                    return "Unknown";
+            }
+        }
+
+        // Function to get the category class based on the number
+        function getCategoryClass(category) {
+            switch (category) {
+                case 1:
+                    return "category-food";
+                case 2:
+                    return "category-transport";
+                case 3:
+                    return "category-entertainment";
+                default:
+                    return "";
+            }
+        }
+
+        // Function to mark an expense as completed
+        function markAsCompleted(index) {
+            expenses[index].completed = !expenses[index].completed;  // Toggle completion status
+            displayExpenses();  // Update the display
+        }
+
+        // Function to edit an expense
+        function editExpense(index) {
+            let expense = expenses[index];
+
+            // Populate input fields with the existing expense details
+            document.getElementById("description").value = expense.description;
+            document.getElementById("amount").value = expense.amount;
+            document.getElementById("category").value = expense.category;
+
+            // Remove the expense from the array and update the display
+            removeExpense(index);
+        }
+
+        // Function to remove an expense
+        function removeExpense(index) {
+            expenses.splice(index, 1);  // Remove the expense at the given index
+            displayExpenses();  // Update the display
+        }
+    </script>
+</body>
+</html>
