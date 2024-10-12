@@ -7,10 +7,15 @@
     z-index: 1;
   
   }
-
+  *{
+    font-family: "Poppins", sans-serif;
+  }
   .dropdown:hover .dropdown-content {
     display: block;
    
+  }
+  html,body{
+    scroll-behavior: smooth;
   }
   .top{
     margin-top: 20px;
