@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    ul li button{
+        margin-left: 10px;
+    }
+
+.Low{
+    color: red;
+}
+.medium{
+    color: yellow;
+}
+.high{
+    color: green;
+}
+li{
+    text-decoration-line: line-through;
+    color: green;
+}
+
+
+</style>
+<body>
+    <div>
+        <input type="text" placeholder="enter book Title" id="books">
+        <label for="priority">Enter  reading priority (1-High, 2-Medium, 3-Low)</label>
+        <input type="text" placeholder="priority" id="priority">
+        <button onclick="addBook()">Add Book</button>
+        <ul id="ullist">
+
+        </ul>
+
+        <script>
+
+            let BookList=[]
+            let BookPriority=[]
+           
+            function addBook(){
+                let Books= document.getElementById("books")
+            let priorities=Number(document.getElementById("priority").value) 
+              BookIn=Books.value
+              BookPriority.push(BookPriority)
+
+ 
+               
+              if(BookIn!=='' && !isNaN(priorities) && priorities>=1 && priorities<=3){
+
+          
+                let listing=document.createElement("li")
+                listing.textContent=BookIn
+                 let completed=document.createElement("button")
+                completed.textContent="COMPLETE"
+                completed.style.color="green"
+                listing.appendChild(completed)
+                let edit=document.createElement("button")
+                edit.innerHTML="EDIT"
+                listing.appendChild(edit)
+                let remove=document.createElement("button")
+                remove.innerHTML="REMOVE"
+                listing.appendChild(remove)          
+                
+                document.getElementById("ullist").appendChild(listing)
+                 
+                
+                document.getElementById("ullist").querySelectorAll("li").forEach((item)=>{
+                    BookList.push(item.textContent)
+                    localStorage.setItem("lists", JSON.stringify(BookList))
+                })
+
+      
+    
+               remove.onclick=function(){
+                
+                // JSON.parse(localStorage.removeItem("lists"))
+                 document.getElementById("ullist").removeChild(listing);
+               }
+               
+               edit.onclick=function(){
+                 let update =prompt("\edit",BookIn)
+                 BookIn=update
+                 listing.textContent=BookIn
+                  listing.appendChild(completed)
+                 listing.appendChild(edit)
+                 listing.appendChild(remove)
+                 
+                 Books.value=""
+                 priorities.value=""
+               }
+               
+        
+           
+ 
+                 
+        }
+        else{
+        alert("enter values between 1 to 3")
+              }
+
+            }
+        
+        function load(){
+            uList=document.getElementById("ulist")
+            upadtes=JSON.parse(localStorage.getItem("lists") || [])
+            
+            upadtes.forEach((items)=>{
+                news = document.createElement("li")
+                news.innerHTML=items
+                uList.appendChild(items)
+            })
+        }
+        load()
+        </script>
+    </div>
+</body>
+</html>

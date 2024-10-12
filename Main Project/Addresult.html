@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./dropdown.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <div class="row flex">
+   
+            <div class="col menu w-52 bg-[#2c3e50] h-[100vh] ">
+                <h1 class="my-5 text-center text-3xl text-white font-bold">Admin</h1>
+                <hr>
+                 <ul>
+                    <li class="my-10"><i class="fa-solid fa-landmark mx-5 text-white"></i><a href="" class="text-white">Student Classes</a></li>
+                    <li class="my-10"><i class="fa-solid fa-book mx-5 text-white"></i><a href="" class="text-white">Subjects</a></li>  
+                    <li class="my-10"><i class="fa-solid fa-users mx-5 text-white"></i><a href="" class="text-white">Students</a></li>
+                    <li class="my-10"><i class="fa-solid fa-graduation-cap mx-5 text-white"></i><a href="" class="text-white">Result</a></li>
+                 </ul>
+        
+          
+                 
+        
+                </div>
+              
+   
+        <div class="col flex justify-center  bg-[url('./image/result-3236285_1280.jpg')] w-full bg-cover">
+            <form class="w-[670px] bg-[rgba(255,255,255,0.8)] p-5 h-[500px] mt-20">
+                <div>
+                    <h1 class="text-3xl font-bold ">Declare Result</h1>
+                </div>
+                <div class="flex justify-between my-5">
+                    <label for="">Class</label>
+                    
+                        <select name="" id="" class="w-[500px] h-8">
+                            <option value="">Tenth A</option>
+                            <option value="">Fouth C</option>
+                            <option value="">Third B</option>
+                        </select>
+                  
+                 
+                </div>
+
+                <div class="flex justify-between my-5">
+                    <label for="">Student name</label>
+                    <div>
+                        <input type="text" placeholder="Student name" class="w-[500px] h-8">
+                    </div>
+                </div>
+                
+                <div class="flex justify-between my-5 ">
+                    <label for="">Subjects</label>
+
+                    <div>
+                        <div class="my-5">
+                            <p>Physics</p>
+                            <input type="text" placeholder="Enter mark out of 100" class="w-[500px] h-8">
+                        </div>
+                        <div class="my-5">
+                            <p>Chemistry</p>
+                            <input type="text" placeholder="Enter mark out of 100" class="w-[500px] h-8">
+                        </div>
+                        <div class="my-5">
+                            <p>Maths</p>
+                            <input type="text" placeholder="Enter mark out of 100" class="w-[500px] h-8">
+                        </div>
+                     
+    
+                        <div class="my-5">
+                            <button class="bg-blue-500 text-white px-3 py-2">Declare result</button>
+                        </div>
+                    </div>
+                
+
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

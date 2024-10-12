@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="./dropdown.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Subjects</title>
+</head>
+<body> 
+  <img src="" alt="">
+    <div class="row flex    h-[100vh] justify-around">
+      <div class="col w-80  bg-[#2c3e50]">
+        <div class="flex justify-center mt-14 mb-5">
+          <i class="fa-solid fa-user-tie text-3xl text-white mr-3"></i>
+          <h1 class="text-3xl font-bold text-white text-center">Admin</h1>
+        </div> 
+        <hr>
+        <div class="dropdown">
+          <button class="dropbtn text-xl font-bold  text-white "><i class="fa-solid fa-landmark mx-5 text-white"></i>Student Classes</button>
+          <div class="dropdown-content">
+            <div>
+              <a href="./createClass.html ">Create Class</a>
+            </div>
+            <div class="top">
+              <a href="./manageclasses.html">Manage Classes</a>
+            </div>
+          
+          </div>
+        </div>
+
+        <!-- //drop-2 -->
+        <div class="dropdown">
+          <button class="dropbtn text-xl font-bold  text-white "><i class="fa-solid fa-book graduate  mx-5 text-white"></i>Subjects</button>
+          <div class="dropdown-content">
+            <div>
+              <a href="./createsSubjects.html">Create Subject</a>
+            </div>
+            <div class="top">
+              <a href="./manageSubject.html">Manage Subjects</a>
+            </div>
+          
+          </div>
+        </div>
+
+
+        <!-- //drop-3 -->
+        <div class="dropdown">
+          <button class="dropbtn text-xl font-bold  text-white "><i class="fa-solid fa-users mx-5 text-white"></i>Students</button>
+          <div class="dropdown-content p-2">
+            <div>
+              <a href="./Addstudent.html" >Add Students</a>
+            </div>
+            <div class="top">
+              <a href="./manageStudents.html">Manage Students</a>
+            </div>
+          
+          </div>
+        </div>
+
+               <!-- //drop-4 -->
+               <div class="dropdown">
+                <button class="dropbtn text-xl font-bold  text-white "><i class="fa-solid fa-graduation-cap mx-5 text-white"></i>Results</button>
+                <div class="dropdown-content">
+                  <div>
+                    <a href="./Addstudent.html">Add Result</a>
+                  </div>
+                  <div class="top">
+                    <a href="./manageStudents.html">Manage Results</a>
+                  </div>
+                
+                </div>
+              </div>
+
+              
+
+      </div>
+        <div class="col w-full flex justify-center text-white  bg-[url(./image/pexels-moose-photos-170195-1037995.jpg)] bg-cover " >
+         
+            <form class="rounded-md w-2/4 bg-[rgba(0,0,0,0.8)] mt-20  p-10 h-[300px] backdrop-blur-sm">
+            <h1 class="text-2xl font-bold">Update Subjects</h1>
+            <div class="flex justify-around justify-evenly  my-5" > 
+                <label for="">Subject Name</label>
+                <div>
+                  <input type="text" placeholder="class " class="h-8 w-full pl-3">
+                </div>
+            </div>
+           
+            <div class="flex justify-evenly my-8">
+                <label for="">Subject Code</label>
+                <div>
+                  <input type="text" placeholder="class"  class="h-8 w-full pl-3 ">
+                </div>
+  
+            </div>
+            
+              <div class="flex justify-evenly">
+                 <div></div>
+                <button type="submit" class="bg-green-600 text-white p-2">Update<i class="fa-solid fa-check"></i></button>
+              </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
