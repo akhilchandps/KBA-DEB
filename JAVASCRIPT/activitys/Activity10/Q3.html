@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=!, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+        <div>
+            <label for="">First Number
+                <input type="number" id="first"></label>
+        </div>
+
+        <div>
+            <label for="">Second Number
+                <input type="number" id="second"></label>
+        </div>
+
+        <button onclick="CompareNum()">Compare</button>
+    
+        <div id="output">
+
+        </div>
+    </div>
+
+
+    <script>
+        
+   function CompareNum(){
+    const first= document.getElementById("first")
+    firstVal=first.value
+     const second=document.getElementById("second")
+     secondVal=second.value
+       const output=document.getElementById("output")
+
+    if(firstVal === secondVal){
+      output.innerHTML=`${firstVal} and ${secondVal} are equal `
+    }else{
+         output.innerHTML=`${firstVal} and ${secondVal} are not equal `
+    }
+   }
+    </script>
+</body>
+</html>

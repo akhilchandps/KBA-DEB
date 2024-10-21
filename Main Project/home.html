@@ -9,7 +9,7 @@
     <title>Home</title>
 </head>
 <body>
-    <nav class="flex justify-between px-3 py-4 shadow-xl bg-[#024550] text-white">
+    <nav class="flex justify-between px-3 py-4 shadow-xl w-full bg-[#024550] text-white">
         <div>
             <h1>SRMS</h1>
         </div>
@@ -27,9 +27,9 @@
             <img src="./image/architect-blueprint-sketched-with-pencil-paper-close-up-focus-generated-by-ai.jpg" class=" w-full"  alt="">
         </div>
 
-        <div class="absolute top-52 left-24">
-            <h1 class="text-5xl text-white font-bold my-2">Student Result Management System</h1>
-            <button class="bg-black text-white w-36 h-12 rounded-xl mt-5">Get Started</button>
+        <div class="absolute md:top-52 top-0  md:left-24">
+            <h1 class="md:text-5xl text-2xl text-white font-bold my-2">Student Result Management System</h1>
+            <button class="bg-black text-white w-36 h-12 rounded-xl mt-5"><a href="./index.html">Get Started</a></button>
         </div>
    
     </div>
@@ -40,7 +40,7 @@
         <h1 class="text-5xl font-bold text-[#024550]">Our Popular Classes</h1>
         <p>We offer a diverse range of interactive and engaging classes designed to inspire curiosity and ignite a passion for learning.</p>
 
-        <div class="row flex justify-around m-5">
+        <div class="row md:flex justify-around m-5">
             <div class="col flex flex-col items-center m-5">
                 <div class="w-96 my-5 ">
                     <img src="https://cdn.prod.website-files.com/662e2d8ec181679006f84e5d/664330130573dd7d8286f805_Class%201-p-500.jpg" class="w-full" alt="">
@@ -103,12 +103,18 @@
      </div>
 
 <!-- footer -->
-<div>
-    <ul class="flex justify-evenly bg-[#024550] text-white text-3xl h-12 p-12">
-        <i class="fa-brands fa-linkedin"></i>
-        <i class="fa-brands fa-square-facebook"></i>
-        <i class="fa-brands fa-square-instagram"></i>
-    </ul>
-</div>
+<footer class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto text-center">
+      <p class="text-md">&copy; 2024 Student Result Management System. All rights reserved.</p>
+      <p class="text-md mt-2">
+        Designed and Developed by <a href="#" class="text-blue-400 hover:underline">Your Name</a>
+      </p>
+      <div class="mt-3">
+        <a href="#" class="text-blue-400 hover:underline mx-2">Privacy Policy</a>
+        <a href="#" class="text-blue-400 hover:underline mx-2">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+  
 </body>
 </html>

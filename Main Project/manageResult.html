@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="./dropdown.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage subject</title>
+</head>
+<body>
+    <div class="row flex">
+        <div class="col w-80   bg-[#024550] h-[100vh]">
+          <div class="flex justify-between mt-14 mb-5 w-[165px] m-5">
+            <div class="w-12">
+              <img src="./image/3d-cartoon-portrait-person-practicing-law-related-profession.jpg" class="w-full rounded-full" alt="">
+            </div>
+            <a href="./Dashboard.html" class="text-3xl font-bold text-white text-center">Admin</a>
+          </div> 
+            <hr>
+            <div class="dropdown">
+              <button class="dropbtn text-xl font-bold  text-white "><i class="fa-solid fa-landmark mx-5 text-white"></i>Student Classes</button>
+              <div class="dropdown-content">
+                <div>
+                  <a href="./createClass.html ">Create Class</a>
+                </div>
+                <div class="top">
+                  <a href="./manageclasses.html">Manage Classes</a>
+                </div>
+              
+              </div>
+            </div>
+  
+            <!-- //drop-2 -->
+            <div class="dropdown">
+              <button class="dropbtn text-xl font-bold  text-white "><i class="fa-solid fa-book graduate  mx-5 text-white"></i>Subjects</button>
+              <div class="dropdown-content">
+                <div>
+                  <a href="./createsSubjects.html">Create Subject</a>
+                </div>
+                <div class="top">
+                  <a href="./manageSubject.html">Manage Subjects</a>
+                </div>
+                <div class="top">
+                    <a href="./AddSubjectcombination.html">Add Subject Combination</a>
+                  </div>
+                  <div class="top">
+                    <a href="./ManageSubjectComb.html">Manage Subject Combination</a>
+                  </div>
+              
+              </div>
+            </div>
+  
+  
+            <!-- //drop-3 -->
+            <div class="dropdown">
+              <button class="dropbtn text-xl font-bold  text-white "><i class="fa-solid fa-users mx-5 text-white"></i>Students</button>
+              <div class="dropdown-content p-2">
+                <div>
+                  <a href="./Addstudent.html" >Add Students</a>
+                </div>
+                <div class="top">
+                  <a href="./manageStudents.html">Manage Students</a>
+                </div>
+              
+              </div>
+            </div>
+  
+                   <!-- //drop-4 -->
+                   <div class="dropdown">
+                    <button class="dropbtn text-xl font-bold  text-white "><i class="fa-solid fa-graduation-cap mx-5 text-white"></i>Results</button>
+                    <div class="dropdown-content">
+                      <div>
+                        <a href="./Addstudent.html">Add Result</a>
+                      </div>
+                      <div class="top">
+                        <a href="./manageStudents.html">Manage Results</a>
+                      </div>
+                    
+                    </div>
+                  </div>
+  
+                  <div class="dropdown w-52">
+                    <button class="dropbtn text-xl font-bold  text-white"><i class="fa-solid fa-lock mr-3"></i><a href="./Adminchangepwd.html">Admin Change Password</a></button>
+                  </div>   
+    
+          </div>
+        <div class="col w-full bg-[url(./image/pexels-moose-photos-170195-1037995.jpg)]  bg-cover">
+            <h1 class="text-3xl font-bold my-5  ml-12 text-[#024550]">MANAGE STUDENTS</h1>
+            <table class="border border-2 m-auto bg-[rgba(255,255,255,0.8)] mt-20 shadow-md shadow-black-600 ">
+                <tr>
+                    <th class="text-center p-5 border">Sl No</th>
+                    <th class="text-center p-5 border">Student Name</th>
+                    <th class="text-center p-5 border">Roll Id</th>
+                    <th class="text-center p-5 border">Class</th>
+                    <th class="text-center p-5 border">Reg Date</th>
+                    <th class="text-center p-5 border">Status</th>
+                    <th class="text-center p-5 border">Action</th>
+                
+                </tr>
+    
+                <tr>
+                    <td class="text-center p-5 border">1</td>
+                    <td class="text-center p-5 border">Athira</td>
+                    <td class="text-center p-5 border">1001</td>
+                    <td class="text-center p-5 border">First C</td>
+                      <td class="text-center p-5 border">2024-08-10</td>
+                    <td class="text-center p-5 border text-green-600">Active</td>
+                    <td class="text-center p-5 border flex justify-between">
+                        <a href="./Addstudent.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
+                      </td>
+                </tr>
+    
+            
+                <tr>
+                    <td class="text-center p-5 border">2</td>
+                    <td class="text-center p-5 border">Akhil</td>
+                    <td class="text-center p-5 border">1002</td>
+                    <td class="text-center p-5 border">Fourth C</td>
+                    <td class="text-center p-5 border">2024-08-10</td>
+                    <td class="text-center p-5 border text-green-600">Active</td>
+                    <td class="text-center p-5 border flex justify-between">
+                        <a href="./Addstudent.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
+                      </td>
+                </tr>
+    
+              
+                <tr>
+                    <td class="text-center p-5 border">3</td>
+                    <td class="text-center p-5 border">Ranjith</td>
+                    <td class="text-center p-5 border">1003</td>
+                    <td class="text-center p-5 border">First B</td>
+                    <td class="text-center p-5 border">2024-08-10</td>
+                    <td class="text-center p-5 border text-green-600">Active</td>
+                    <td class="text-center p-5 border flex justify-between">
+                        <a href="./Addstudent.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
+                      </td>
+                </tr>
+    
+            
+                <tr>
+                    <td class="text-center p-5 border">3</td>
+                    <td class="text-center p-5 border">Bipin</td>
+                    <td class="text-center p-5 border">1004</td>
+                    <td class="text-center p-5 border">Third C</td>
+                    <td class="text-center p-5 border">2024-08-10</td>
+                    <td class="text-center p-5 border text-green-600">Active</td>
+
+                    <td class="text-center p-5 border flex justify-between">
+                        <a href="./Addstudent.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
+                      </td>
+                </tr>
+                <tr>
+                    <td class="text-center p-5 border">4</td>
+                    <td class="text-center p-5 border">Vishnu</td>
+                    <td class="text-center p-5 border">1005</td>
+                    <td class="text-center p-5 border">First D</td>
+                    <td class="text-center p-5 border">2024-02-16</td>
+                    <td class="text-center p-5 border text-green-600">Active</td>
+                    <td class="text-center p-5 border flex justify-between">
+                        <a href="./Addstudent.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
+                      </td>
+                </tr>
+            </table>
+        </div>
+    
+    </div>
+</body>
+</html>

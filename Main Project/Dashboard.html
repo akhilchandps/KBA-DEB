@@ -12,20 +12,20 @@
     <title>DashBoard</title>
 </head>
 <body>
-    <div class="row flex justify-around align-center">
+    <div class="row md:flex md:justify-around align-center">
       
         <!-- col2 -->
 
-        <div class="col w-80  bg-[#024550] h-[100vh]">
-            <div class="flex justify-between mt-14 mb-5 w-[165px] m-5">
+        <div class="col md:w-80 w-full  bg-[#024550] md:h-[101vh] h-[600px]">
+            <div class="flex md:justify-between justify-center md:mt-14 mb-5 w-[165px] md:m-5">
               <div class="w-12">
                 <img src="./image/3d-cartoon-portrait-person-practicing-law-related-profession.jpg" class="w-full rounded-full" alt="">
               </div>
               <a href="./Dashboard.html" class="text-3xl font-bold text-white text-center">Admin</a>
             </div> 
             <hr>
-            <div class="dropdown">
-              <button class="dropbtn text-xl font-bold  text-white "><i class="fa-solid fa-landmark mx-5 text-white"></i>Student Classes</button>
+            <div class="dropdown flex flex-col items-center md:flex-row">
+              <button class="dropbtn md:text-xl text-sm font-bold  text-white "><i class="fa-solid fa-landmark mx-5 text-white"></i>Student Classes</button>
               <div class="dropdown-content">
                 <div>
                   <a href="./createClass.html ">Create Class</a>
@@ -38,8 +38,8 @@
             </div>
   
             <!-- //drop-2 -->
-            <div class="dropdown">
-              <button class="dropbtn text-xl font-bold  text-white "><i class="fa-solid fa-book graduate  mx-5 text-white"></i>Subjects</button>
+            <div class="dropdown   flex flex-col items-center md:flex-row">
+              <button class="dropbtn  md:text-xl text-sm  font-bold  text-white "><i class="fa-solid fa-book graduate  mx-5 text-white"></i>Subjects</button>
               <div class="dropdown-content">
                 <div>
                   <a href="./createsSubjects.html">Create Subject</a>
@@ -47,28 +47,35 @@
                 <div class="top">
                   <a href="./manageSubject.html">Manage Subjects</a>
                 </div>
+                <div class="top">
+                    <a href="./AddSubjectcombination.html">Add Subject Combination</a>
+                  </div>
+                  <div class="top">
+                    <a href="./ManageSubjectComb.html">Manage Subject Combination</a>
+                  </div>
               
               </div>
             </div>
   
   
             <!-- //drop-3 -->
-            <div class="dropdown">
-              <button class="dropbtn text-xl font-bold  text-white "><i class="fa-solid fa-users mx-5 text-white"></i>Students</button>
+            <div class="dropdown flex flex-col items-center md:flex-row">
+              <button class="dropbtn  md:text-xl text-sm  font-bold  text-white "><i class="fa-solid fa-users mx-5 text-white"></i>Students</button>
               <div class="dropdown-content p-2">
                 <div>
-                  <a href="./Addstudent.html" >Add Students</a>
+                  <a href="./createsSubjects.html">Add Student</a>
                 </div>
                 <div class="top">
-                  <a href="./manageStudents.html">Manage Students</a>
+                  <a href="./manageSubject.html">Manage Students</a>
                 </div>
+          
               
               </div>
             </div>
   
                    <!-- //drop-4 -->
-                   <div class="dropdown">
-                    <button class="dropbtn text-xl font-bold  text-white "><i class="fa-solid fa-graduation-cap mx-5 text-white"></i>Results</button>
+                   <div class="dropdown flex flex-col items-center md:flex-row">
+                    <button class="dropbtn  md:text-xl text-sm  font-bold  text-white "><i class="fa-solid fa-graduation-cap mx-5 text-white"></i>Results</button>
                     <div class="dropdown-content">
                       <div>
                         <a href="./Addstudent.html">Add Result</a>
@@ -80,12 +87,12 @@
                     </div>
                   </div>
   
-                  <div class="dropdown w-52">
-                    <button class="dropbtn text-xl font-bold  text-white"><i class="fa-solid fa-lock mr-3"></i><a href="./Adminchangepwd.html">Admin Change Password</a></button>
+                  <div class="dropdown md:w-52 flex flex-col items-center md:flex-row">
+                    <button class="dropbtn  md:text-xl text-sm  font-bold  text-white"><i class="fa-solid fa-lock mr-3"></i><a href="./Adminchangepwd.html">Admin Change Password</a></button>
                   </div>  
     
-                  <div class="dropdown w-52  text-center">
-                    <button class="dropbtn text-xl font-bold  text-white"><i class="fa-solid fa-right-from-bracket mr-3"></i><a href="./Adminlogin.html">LogOut</a></button>
+                  <div class="dropdown md:w-52 flex flex-col items-center md:justify-center  md:flex-row">
+                    <button class="dropbtn  md:text-xl text-sm  font-bold  text-white"><i class="fa-solid fa-right-from-bracket mr-3"></i><a href="./Adminlogin.html">LogOut</a></button>
                   </div>  
 
 
@@ -93,16 +100,41 @@
    
   <!-- //col -->
 
-        <div class="col w-full bg-[url(./image/377105-PBR732-669.jpg)] bg-cover ">
-            <h1 class="text-4xl text-white font-bold py-5 ml-10">DashBoard</h1>
-             <div class="roww flex justify-center ">
-                <div class="coll bg-[url(./image/texture-7515225_1920.jpg)] w-2/5 h-52 text-white text-2xl mr-12 "><h1 class="font-bold flex justify-end mt-12 mr-5">Reg Users</h1></div>
-                <div class="coll bg-[url(./image//creative-7581718_1920.jpg)] w-2/5 h-52 text-white text-2xl bg-cover "><h1 class="font-bold flex justify-end mt-12 mr-5 obj">Subjects Listed</h1></div>
+        <div class="col w-full bg-[url(./image/377105-PBR732-669.jpg)] md:bg-cover  ">
+            <h1 class="md:text-4xl text-2xl text-white font-bold py-5 ml-10">DashBoard</h1>
+             <div class="roww md:flex  md:justify-center  md:mx-20 ">
+                <div class="coll bg-[url(./image/texture-7515225_1920.jpg)] md:w-3/6 w-[300px] h-52 text-white md:text-2xl text-xl md:mr-12 m-auto  ">
+                  <ul class="flex flex-col">
+                    <li class="font-bold flex text-3xl  justify-end mt-12 mr-5">14</li>
+                    <li class="font-bold flex justify-end mt-12 mr-5">Reg Users</li>
+                  </ul>
+                </div>
+
+                <div class="coll bg-[url(./image//creative-7581718_1920.jpg)] md:w-3/6 w-[300px] h-52 text-white md:text-2xl text-xl bg-cover  m-auto  ">
+                  <ul>
+                    <li class="font-bold flex text-3xl  justify-end mt-12 mr-5 obj">10</li>
+                    <li class="font-bold flex justify-end mt-12 mr-5 obj">Subjects Listed</li>
+                  </ul>
              </div>
-             <div class="roww flex justify-center mt-5 ">
-                <div class="coll bg-[url(./image/the-background-292720_1920.png)] w-2/5 h-52 text-white text-2xl mr-12 bg-cover"><h1 class="font-bold flex justify-end mt-12 mr-5">Total Classes Listed</h1></div>
-                <div class="coll bg-[url(https://cdn.pixabay.com/photo/2016/02/03/16/55/background-1177450_640.jpg)] w-2/5 h-52 text-white text-2xl "><h1 class="font-bold flex justify-end mt-12 mr-5">Reg Users</h1></div>
              </div>
+
+
+             <div class="roww md:flex md:justify-center mt-5 md:mx-20 ">
+
+                <div class="coll bg-[url(./image/the-background-292720_1920.png)] md:w-3/6 w-[300px] h-52 text-white md:text-2xl text-xl  md:mr-12 m-auto bg-cover">
+                  <ul>
+                    <li class="font-bold flex text-3xl justify-end mt-12 mr-5">6</li>
+                    <li class="font-bold flex justify-end mt-12 mr-5">Total Classes Listed</li>
+                  </ul>
+                  </div>
+                <div class="coll bg-[url(https://cdn.pixabay.com/photo/2016/02/03/16/55/background-1177450_640.jpg)] md:w-3/6 w-[300px] h-52 text-white md:text-2xl text-xl  m-auto ">
+                  <ul>
+                    <li class="font-bold flex text-3xl  justify-end mt-12 mr-5">4</li>
+                    <li class="font-bold flex justify-end mt-12 mr-5">Results decalred</li>
+                  </ul>
+                </div>        
+             </div>
+
         </div>
     </div>
 </body>

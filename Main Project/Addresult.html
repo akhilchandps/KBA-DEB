@@ -15,26 +15,86 @@
  
     <div class="row flex">
    
-            <div class="col menu w-52 bg-[#2c3e50] h-[100vh] ">
-                <h1 class="my-5 text-center text-3xl text-white font-bold">Admin</h1>
-                <hr>
-                 <ul>
-                    <li class="my-10"><i class="fa-solid fa-landmark mx-5 text-white"></i><a href="" class="text-white">Student Classes</a></li>
-                    <li class="my-10"><i class="fa-solid fa-book mx-5 text-white"></i><a href="" class="text-white">Subjects</a></li>  
-                    <li class="my-10"><i class="fa-solid fa-users mx-5 text-white"></i><a href="" class="text-white">Students</a></li>
-                    <li class="my-10"><i class="fa-solid fa-graduation-cap mx-5 text-white"></i><a href="" class="text-white">Result</a></li>
-                 </ul>
-        
-          
-                 
-        
+        <div class="col md:w-80 w-full  bg-[#024550] md:h-[101vh] h-[600px]">
+            <div class="flex md:justify-between justify-center md:mt-14 mb-5 w-[165px] md:m-5">
+              <div class="w-12">
+                <img src="./image/3d-cartoon-portrait-person-practicing-law-related-profession.jpg" class="w-full rounded-full" alt="">
+              </div>
+              <a href="./Dashboard.html" class="text-3xl font-bold text-white text-center">Admin</a>
+            </div> 
+            <hr>
+            <div class="dropdown flex flex-col items-center md:flex-row">
+              <button class="dropbtn md:text-xl text-sm font-bold  text-white "><i class="fa-solid fa-landmark mx-5 text-white"></i>Student Classes</button>
+              <div class="dropdown-content">
+                <div>
+                  <a href="./createClass.html ">Create Class</a>
                 </div>
+                <div class="top">
+                  <a href="./manageclasses.html">Manage Classes</a>
+                </div>
+              
+              </div>
+            </div>
+  
+            <!-- //drop-2 -->
+            <div class="dropdown   flex flex-col items-center md:flex-row">
+              <button class="dropbtn  md:text-xl text-sm  font-bold  text-white "><i class="fa-solid fa-book graduate  mx-5 text-white"></i>Subjects</button>
+              <div class="dropdown-content">
+                <div>
+                  <a href="./createsSubjects.html">Create Subject</a>
+                </div>
+                <div class="top">
+                  <a href="./manageSubject.html">Manage Subjects</a>
+                </div>
+              
+              </div>
+            </div>
+  
+  
+            <!-- //drop-3 -->
+            <div class="dropdown flex flex-col items-center md:flex-row">
+              <button class="dropbtn  md:text-xl text-sm  font-bold  text-white "><i class="fa-solid fa-users mx-5 text-white"></i>Students</button>
+              <div class="dropdown-content p-2">
+                <div>
+                  <a href="./Addstudent.html" >Add Students</a>
+                </div>
+                <div class="top">
+                  <a href="./manageStudents.html">Manage Students</a>
+                </div>
+              
+              </div>
+            </div>
+  
+                   <!-- //drop-4 -->
+                   <div class="dropdown flex flex-col items-center md:flex-row">
+                    <button class="dropbtn  md:text-xl text-sm  font-bold  text-white "><i class="fa-solid fa-graduation-cap mx-5 text-white"></i>Results</button>
+                    <div class="dropdown-content">
+                      <div>
+                        <a href="./Addstudent.html">Add Result</a>
+                      </div>
+                      <div class="top">
+                        <a href="./manageStudents.html">Manage Results</a>
+                      </div>
+                    
+                    </div>
+                  </div>
+  
+                  <div class="dropdown md:w-52 flex flex-col items-center md:flex-row">
+                    <button class="dropbtn  md:text-xl text-sm  font-bold  text-white"><i class="fa-solid fa-lock mr-3"></i><a href="./Adminchangepwd.html">Admin Change Password</a></button>
+                  </div>  
+    
+                  <div class="dropdown md:w-52 flex flex-col items-center md:justify-center  md:flex-row">
+                    <button class="dropbtn  md:text-xl text-sm  font-bold  text-white"><i class="fa-solid fa-right-from-bracket mr-3"></i><a href="./Adminlogin.html">LogOut</a></button>
+                  </div>  
+
+
+          </div>
               
    
         <div class="col flex justify-center  bg-[url('./image/result-3236285_1280.jpg')] w-full bg-cover">
             <form class="w-[670px] bg-[rgba(255,255,255,0.8)] p-5 h-[500px] mt-20">
                 <div>
-                    <h1 class="text-3xl font-bold ">Declare Result</h1>
+                    <h1 class="text-3xl font-bold text-[#024550]">Declare Result</h1>
                 </div>
                 <div class="flex justify-between my-5">
                     <label for="">Class</label>

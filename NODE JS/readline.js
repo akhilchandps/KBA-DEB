@@ -1,5 +1,4 @@
 const readline=require('readline');
-
 const rl=readline.createInterface({
     input:process.stdin,
     output:process.stdout
@@ -14,8 +13,6 @@ function askName(){
 }
 function askFavoriteLanguage(){
     rl.question("what is your faviorite language?",function(language){
-        console.log(`${language} is a great choice`)
-        rl.close();
     })
 }
 //start prompt

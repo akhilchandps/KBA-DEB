@@ -5,13 +5,21 @@
     background-color: #f9f9f9;
     min-width: 160px;
     z-index: 1;
+    color:#024550;
+    font-weight: 600;
   
+  }
+  hr{
+    margin-left: 10px;
+    margin-right: 10px;
   }
   *{
     font-family: "Poppins", sans-serif;
   }
   .dropdown:hover .dropdown-content {
     display: block;
+    margin-top: 115px;
+
    
   }
   html,body{

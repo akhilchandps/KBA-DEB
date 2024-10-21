@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <label for="">Enter element</label>
+            <input type="text" id="array">
+            <div>
+                <button onclick="arrayElement()">Enter array is</button>
+            </div>
+            <div id="output">
+                
+            </div>
+        </div>
+   
+    </div>
+
+    <script>
+        function arrayElement(){
+           
+            let array=[]
+            let element= document.getElementById("array").value
+             array.push(element)
+
+            document.getElementById("output").innerHTML=`The Entered array is:${array}`
+         
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="my-8 flex gap-4  flex-col ">
+        <label for="">Enter side of square
+            <input type="number" id="num" class="border border-bg-black">
+        </label>
+        <div>
+            <button onclick="AreaSquare()" class="text-white bg-gray-500 p-2">Area of square</button>
+
+        </div>
+
+        <div id="Square">
+
+        </div>
+    </div>
+
+    <div class=" flex gap-4  flex-col">
+        <div>
+            <label for="">Enter the length
+                <input type="number" id="length" class="border border-bg-black">
+            </label>
+        </div>
+    <div>
+        <label for="">Enter the breadth
+            <input type="number" id="breadth" class="border border-bg-black">
+        </label>
+    </div>
+      
+        <div>
+            <button onclick="AreaRectangle()" class="text-white bg-gray-500 p-2">Area of rectangle</button>
+
+        </div>
+
+        <div id="rectangle">
+
+        </div>
+    </div>
+
+
+    <div class="flex gap-4  flex-col">
+        <label for="">Enter the radius
+            <input type="number" id="radius" class="border border-bg-black">
+        </label>
+       <div>
+        <button onclick="AreaCirlce()" class="text-white bg-gray-500 p-2">Area of Circle</button>
+
+       </div>
+
+
+        <div id="circle">
+
+        </div>
+    </div>
+<script>
+    function AreaSquare(){
+       const side = Number(document.getElementById("num").value);
+       
+        const  Areasquare= side*side
+       
+        document.getElementById('Square').innerHTML=`Area of Square = ${Areasquare}`
+        console.log(Areasquare);
+
+        
+    }
+
+    function AreaRectangle(){
+        const length = Number(document.getElementById("length").value);
+        const breadth = Number(document.getElementById("breadth").value);
+       
+        const Area= length*breadth
+
+        document.getElementById('rectangle').innerHTML=`Area of rectangle = ${Area}`
+
+    }
+     function AreaCirlce(){
+       const  r=Number(document.getElementById("radius").value)
+        let pi=3.14
+        Areacircle= pi*r*r
+        document.getElementById('circle').innerHTML=`Area of circle = ${Areacircle}`
+
+     }
+</script>
+</body>
+</html>

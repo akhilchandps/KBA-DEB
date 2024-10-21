@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" href="./dropdown.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Subjects</title>
+</head>
+<body> 
+  <img src="" alt="">
+    <div class="row md:flex    h-[100vh] justify-around">
+      
+      <div class="col md:w-80 w-full  bg-[#024550] md:h-[101vh] h-[600px]">
+        <div class="flex md:justify-between justify-center md:mt-14 mb-5 w-[165px] md:m-5">
+          <div class="w-12">
+            <img src="./image/3d-cartoon-portrait-person-practicing-law-related-profession.jpg" class="w-full rounded-full" alt="">
+          </div>
+          <a href="./Dashboard.html" class="text-3xl font-bold text-white text-center">Admin</a>
+        </div> 
+        <hr>
+        <div class="dropdown flex flex-col items-center md:flex-row">
+          <button class="dropbtn md:text-xl text-sm font-bold  text-white "><i class="fa-solid fa-landmark mx-5 text-white"></i>Student Classes</button>
+          <div class="dropdown-content">
+            <div>
+              <a href="./createClass.html ">Create Class</a>
+            </div>
+            <div class="top">
+              <a href="./manageclasses.html">Manage Classes</a>
+            </div>
+          
+          </div>
+        </div>
+
+        <!-- //drop-2 -->
+        <div class="dropdown   flex flex-col items-center md:flex-row">
+          <button class="dropbtn  md:text-xl text-sm  font-bold  text-white "><i class="fa-solid fa-book graduate  mx-5 text-white"></i>Subjects</button>
+          <div class="dropdown-content">
+            <div>
+                <a href="./createsSubjects.html">Create Subject</a>
+              </div>
+              <div class="top">
+                <a href="./manageSubject.html">Manage Subjects</a>
+              </div>
+              <div class="top">
+                  <a href="./AddSubjectcombination.html">Add Subject Combination</a>
+                </div>
+                <div class="top">
+                  <a href="./ManageSubjectComb.html">Manage Subject Combination</a>
+                </div>
+          
+          </div>
+        </div>
+
+
+        <!-- //drop-3 -->
+        <div class="dropdown flex flex-col items-center md:flex-row">
+          <button class="dropbtn  md:text-xl text-sm  font-bold  text-white "><i class="fa-solid fa-users mx-5 text-white"></i>Students</button>
+          <div class="dropdown-content p-2">
+            <div>
+              <a href="./Addstudent.html" >Add Students</a>
+            </div>
+            <div class="top">
+              <a href="./manageStudents.html">Manage Students</a>
+            </div>
+          
+          </div>
+        </div>
+
+               <!-- //drop-4 -->
+               <div class="dropdown flex flex-col items-center md:flex-row">
+                <button class="dropbtn  md:text-xl text-sm  font-bold  text-white "><i class="fa-solid fa-graduation-cap mx-5 text-white"></i>Results</button>
+                <div class="dropdown-content">
+                  <div>
+                    <a href="./Addstudent.html">Add Result</a>
+                  </div>
+                  <div class="top">
+                    <a href="./manageStudents.html">Manage Results</a>
+                  </div>
+                
+                </div>
+              </div>
+
+              <div class="dropdown md:w-52 flex flex-col items-center md:flex-row">
+                <button class="dropbtn  md:text-xl text-sm  font-bold  text-white"><i class="fa-solid fa-lock mr-3"></i><a href="./Adminchangepwd.html">Admin Change Password</a></button>
+              </div>  
+
+              <div class="dropdown md:w-52 flex flex-col items-center md:justify-center  md:flex-row">
+                <button class="dropbtn  md:text-xl text-sm  font-bold  text-white"><i class="fa-solid fa-right-from-bracket mr-3"></i><a href="./Adminlogin.html">LogOut</a></button>
+              </div>  
+
+
+      </div>
+  
+        <div class="col w-full md:h-[626px]   h-[600px] flex justify-center text-white  bg-[url(./image/background-2354151_1280.jpg)] bg-cover " >
+         
+            <form class="rounded-md md:w-8/12 w-[380px] bg-[rgba(0,0,0,0.8)] mt-24  p-10 md:h-[300px] h-[400px] backdrop-blur-sm">
+            <h1 class="text-2xl font-bold text-[#024550]">Add Subject Combination</h1>
+            <div class="flex justify-between my-5" > 
+                <label for="">Class</label>
+                <div>
+                    <select name="" id="" class="h-8 md:w-96 w-52 pl-3 text-black" >
+                        <option value="">Select Class</option>
+                        <option value="">First section A</option>
+                        <option value="">Second section C</option>
+                        <option value="">Tenth section C</option>
+                        <option value="">Second section C</option>
+                        <option value="">Fourth section B</option>
+                    </select>
+                 </div>
+            </div>
+           
+            <div class="flex justify-between my-8">
+                <label for="">Subject Code</label>
+                <div>
+                    <select name="" id="" class="h-8 md:w-96 w-52 pl-3 text-black">
+                        <option value="">Select Subject</option>
+                        <option value="">Maths</option>
+                        <option value="">Chemistry</option>
+                        <option value="">Physics</option>
+                        <option value="">Computer Science</option>
+                        <option value="">Maths</option>
+                    </select>
+                 </div>
+  
+            </div>
+            
+              <div class="flex justify-between">
+                 <div></div>
+                <button type="submit" class="bg-green-600 text-white p-2">Add<i class="fa-solid fa-check ml-3"></i></button>
+              </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

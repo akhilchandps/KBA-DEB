@@ -29,8 +29,8 @@ function addItemPrompt(){
         rl.question('enter the item name :', function (name) {
             rl.question('enter item catagory : ', function (catagory) {
                 rl.question('enter item quantity :', function (quantity) {
-                    addItem(id, name, catagory, quantity);
-                    askCommand();
+                    addItem(id, name, catagory, quantity.parseInt());
+                  
                 })
             })
         })
