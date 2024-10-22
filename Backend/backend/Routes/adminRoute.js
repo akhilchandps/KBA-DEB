@@ -1,9 +1,12 @@
 import { Router } from "express";
 import jwt from 'jsonwebtoken';
 import bcrypt from "bcrypt";
+import dotenv from 'dotenv';
+dotenv.config();
+const secretKey =process.env.secretKey;
 const adminRouter=Router()
 const user= new Map()
-const secretKey="akhil";
+
 
 adminRouter.get('/',(req,res)=>{
     res.send("hello world")

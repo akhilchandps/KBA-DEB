@@ -5,7 +5,7 @@ import { addCourse } from './Routes/addCourseRoute.js';
 
 const app= express();
 app.use(json())
-const port=8000
+const port=process.env.PORT
 
 app.use('/',adminRouter)
 app.use('/',addCourse)
