@@ -45,9 +45,13 @@ adminRouter.post('/signup',async(req,res)=>{
                 res.status(400).json({message:"username Already exist"})
               }else{
                 user.set(Username,{
-                  FirstName,LastName,newP,Role
+                  FirstName,LastName,Password:newP,Role
                 })
-                res.status(201).json("register successfull")
+                console.log(user.get(Username));
+                
+                res.status(201).json({message:"register successfull",
+                  items:user.get(Username)
+                })
               }
     } catch (error) {
       res.status(500).json(error)
@@ -64,7 +68,7 @@ adminRouter.post('/signup',async(req,res)=>{
         if(!result){
             res.status(400).json({message:"inavlid username"})
         }else{
-           const isValid= await bcrypt.compare(Password,result.newP)
+           const isValid= await bcrypt.compare(Password,result.Password)
             console.log(isValid);
 
             if(isValid) {
@@ -75,6 +79,9 @@ adminRouter.post('/signup',async(req,res)=>{
                 console.log(token);
                 return res.status(200).json({ message: "Login successful" });
                 
+            }else{
+              return res.status(401).json({ message: "invalid password" });
+
             }
 
                   

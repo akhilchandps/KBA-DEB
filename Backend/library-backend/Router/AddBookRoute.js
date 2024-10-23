@@ -1,9 +1,10 @@
 import { Router } from "express";
+import { AuthToken } from "../Middilware/Auth.js";
 
 const addBook=Router()
 
 const Book = new Map();
-addBook.post('/addBook',(req,res)=>{
+addBook.post('/addBook',AuthToken,async(req,res)=>{
 
     const {title,author,genere,description} =req.body
  try {
@@ -12,7 +13,7 @@ addBook.post('/addBook',(req,res)=>{
         Book.set(title,{author,genere,description})
         res.status(201).json("Book Added")
     }else{
-        res.status(400).json("please add the book")
+        res.status(400).json("Book already added")
     } 
 } catch (error) {
     res.status(500).json(error)
@@ -22,20 +23,28 @@ addBook.post('/addBook',(req,res)=>{
 })
 
 
-addBook.get("viewBook",(req,res)=>{
-try {
-    if(Book.has(title,author,genere,description)){
-        let getBook = Book.get(title)
-        res.status(200).json(getBook)
-    } else{
-        res.status(401).json({message:"There is no book"})
-    }
-} catch (error) {
-    res.status(500).json(error)
-}
- 
-})
+addBook.get("/viewBook/:names",(req,res)=>{
 
+    const result= req.params.names
+    console.log(result);
+try {
+    if(Book.has(result)){
+
+        const getBook=Book.get(result);
+        console.log(getBook);
+        return res.status(200).json({
+            message: `${result}`,
+            book: getBook,
+        });          
+    } 
+} catch (error) {
+    
+}
+
+    
+
+
+})
 
 export {addBook}
 

@@ -5,7 +5,6 @@ const issueCertificate=Router();
 const course= new Map();
 
 
-// issue certificate
 issueCertificate.post('/addCerificate',authenticate,(req,res)=>{
     
     const {Course,CertificateId,CertificateName,Grade,Date}=req.body
@@ -41,7 +40,7 @@ issueCertificate.get('/getCertificate/:id',async(req,res)=>{
             console.log(course.get(result));
             let items=course.get(result)
             return res.status(200).json({
-                message: "Courses",
+                message: result,
                 course: items,
             });   
         }

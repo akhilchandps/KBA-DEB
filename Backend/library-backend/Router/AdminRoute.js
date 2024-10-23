@@ -32,28 +32,30 @@ adminRoute.post('/signup',async(req,res)=>{
 })
 
 adminRoute.post('/login',async(req,res)=>{
-    const {email,password}=req.body
-const result=user.has(email)
+    const {email,password} =req.body
 
-try {
-    if(user.has(result)){
-        const isvalid= await bcrypt.compare(password,result.password)
+    const result=user.get(email)
+    if(result){
+
+        const isvalid=await bcrypt.compare(password,result.password)
+        console.log(isvalid);
         if(isvalid){
+
             const token=jwt.sign({username:result.username,role:result.role},secretKey,{expiresIn:'1h'})
-            res.cookie("authtoken",token,{
+            res.cookie("authToken",token,{
                 httpOnly:true
-            });
-          
+            })
+            res.status(200).json({message:"login successfull"})
+            console.log(token);
+
             
-            res.status(200).json({message:"login successfully"})
         }else{
-            res.status(400).json("login failed")
+            res.status(404).json("Inavlid password")
         }
+        
+    }else{
+        res.status(400).json({message:"email is not exist"})
     }
-} catch (error) {
-    res.status(500).json(error)
-}
-    
 })
 
 export {adminRoute}
