@@ -38,6 +38,7 @@
         
      const response= await fetch("http://127.0.0.1:8000/login",{
             method:"POST",
+            credentials:"include",
             headers:{
                 "Content-Type":"application/json"
             },
@@ -50,6 +51,7 @@
         console.log(response);
         
         if(response.status==200){
+          window.location.href="./home.html"
             const data = await response.json();
         console.log(data);
             alert(data.message)    

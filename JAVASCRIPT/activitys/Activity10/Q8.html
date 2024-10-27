@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <label for="">Name of the Subject:</label>
+            <input type="text" id="subject">
+        </div>
+        <div>
+            <label for="">mark:</label>
+            <input type="text" id="mark">
+        </div>
+
+        <button onclick="submit()">Submit</button>
+        <div id="output" style="margin-top: 10px;">
+
+        </div>
+    </div>
+
+    <script>
+       
+        function submit(){
+            let output=document.getElementById("output")
+            let mark=document.getElementById("mark").value
+           console.log(mark);
+           switch(mark){
+            case "A+":{
+              output.innerHTML=`90%-${mark}`
+              break;
+            }
+              case "A":{
+              output.innerHTML=`90%-80%-${mark}`
+              break;
+              }
+
+              case "B+":{
+              output.innerHTML=`80%-70%-${mark}`
+              break;
+              }
+
+              case "B":{
+              output.innerHTML=`70%-60%-${mark}`
+              break;
+              }
+              case "C+":{
+              output.innerHTML=`80%-70%-${mark}`
+              break;
+              }
+
+              case "C":{
+              output.innerHTML=`60%-50%-${mark}`
+              break;
+              }
+             
+              default:{
+                  output.innerHTML=`Invalid grade`
+              }
+          
+           
+        }
+    }
+    </script>
+</body>
+</html>

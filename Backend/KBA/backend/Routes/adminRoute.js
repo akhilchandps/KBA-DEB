@@ -17,8 +17,7 @@ adminRouter.post('/signup',async(req,res)=>{
     try {
       console.log("users data added"); 
         const data=req.body
-        // console.log(data.FirstName);
-        // console.log(data.LastName);
+
              const {
                 FirstName,
                 LastName,
@@ -33,13 +32,7 @@ adminRouter.post('/signup',async(req,res)=>{
               console.log(Username);
         
               const newP= await  bcrypt.hash(Password,10)
-            //   user.set(Username,{
-            //     FirstName,LastName,newP,Roll
-            //   })
-    
-              // console.log(user.get(Username));
-              // res.status(201).send("register successfull")
-              // res.status(201).json({message:"Data Saved"})
+           
     
               if(user.has(Username)){
                 res.status(400).json({message:"username Already exist"})
@@ -88,5 +81,8 @@ adminRouter.post('/signup',async(req,res)=>{
         }
         
     })
+
+
+    
 
 export {adminRouter};
