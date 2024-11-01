@@ -2,49 +2,66 @@ import { Router } from "express";
 import jwt from 'jsonwebtoken';
 import bcrypt from "bcrypt";
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 dotenv.config();
 const secretKey =process.env.secretKey;
 const adminRouter=Router()
-const user= new Map()
+// const user= new Map()
+//user schema
+
+const userSchema = new mongoose.Schema({
+
+  FirstName:String,
+  LastName:String,
+  Username:
+  {type:String,
+    unique:true
+  },
+  Password:String,
+  Role:String
+})
+
+//create model
+const User= mongoose.model("userDetails",userSchema)
+
+
+mongoose.connect('mongodb://localhost:27017/KBA_Course1')
 
 
 adminRouter.get('/',(req,res)=>{
-    res.send("hello world")
+    res.send("hello world");
 })
 
 
 adminRouter.post('/signup',async(req,res)=>{
     try {
-      console.log("users data added"); 
-        const data=req.body
-
-             const {
+      // console.log("users data added"); 
+           const {
                 FirstName,
                 LastName,
                 Username,
                 Password,
                 Role
-              } =data
+              } = req.body
     
+          const newP= await  bcrypt.hash(Password,10)
+          
+          const existingUser= await User.findOne({Username:Username})
     
-              console.log(FirstName);
-              console.log(LastName);
-              console.log(Username);
-        
-              const newP= await  bcrypt.hash(Password,10)
-           
-    
-              if(user.has(Username)){
+              if(existingUser){
                 res.status(400).json({message:"username Already exist"})
               }else{
-                user.set(Username,{
-                  FirstName,LastName,Password:newP,Role
-                })
-                console.log(user.get(Username));
+               const newUser=  User({
+                FirstName:FirstName,
+                LastName:LastName,
+                Username:Username,
+                Password:newP,
+                Role:Role
+               });
+                await newUser.save();
+                // console.log(user.get(Username));
                 
-                res.status(201).json({message:"register successfull",
-                  items:user.get(Username)
-                })
+                res.status(201).json({message:"register successfull"})
               }
     } catch (error) {
       res.status(500).json(error)
@@ -54,9 +71,7 @@ adminRouter.post('/signup',async(req,res)=>{
     adminRouter.post('/login',async(req,res)=>{
         const {Username,Password}=req.body
          console.log(Username);
-         
-        const result=user.get(Username)
-        console.log(result);
+         const result= await User.findOne({Username:Username})
 
         if(!result){
             res.status(400).json({message:"inavlid username"})
@@ -81,7 +96,11 @@ adminRouter.post('/signup',async(req,res)=>{
         }
         
     })
-
+    
+    adminRouter.post('/logout', (req, res) => {
+      res.clearCookie("authtoken");
+      res.status(200).json({ message: "Logout successful" });
+  });
 
     
 
