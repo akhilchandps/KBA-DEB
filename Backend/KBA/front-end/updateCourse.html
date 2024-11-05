@@ -46,19 +46,19 @@ window.onload=async()=>{
         
         console.log(cname,cid,ctype,cprice,cdesc);
 
-     const response=  await fetch('http://127.0.0.1:8000/update',{
-            method:"PUT",
+     const response=  await fetch('http://127.0.0.1:8000/updateCourse',{
+            method:"PATCH",
             credentials:"include",
             headers:{
                 "Content-Type":"application/json"
             },
             body:JSON.stringify({
             
-          courseName:cname,
-          newcourseId:cid,
-          newcourseType:ctype,
-          newPrice:cprice,
-          newcourseDescription:cdesc
+         courseName:cname,
+         courseId:cid,
+         courseType:ctype,
+         Price:cprice,
+         courseDescription:cdesc
  
 
             })

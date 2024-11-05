@@ -60,34 +60,37 @@ try {
 }   
 })
 
-addCourse.put('/update',authenticate, async(req,res)=>{
-    const { courseName,newcourseId,newcourseType,newPrice,newcourseDescription,}=req.body
-  
+adminRouter.patch('/updateCourse', authenticate, async (req, res) => {
+    console.log(req.Username);
+    console.log(req.UserRole);
+    console.log("Hello world");
 
-    const items=await Course.findOne({courseName:courseName})
-    if (!items) {
-        return res.status(404).json({ message: "Course not found" });
+    const { courseName, courseId, courseType, Price, courseDescription } = req.body;
+
+    try {
+        const existingCourse = await Course.findOne({ courseName: courseName });
+        if (!existingCourse) {
+            return res.status(404).json({ message: "Course not found" });
+        }
+
+        if (req.UserRole === "admin") {
+            existingCourse.courseId =courseId || existingCourse.courseId;
+            existingCourse.courseType = courseType || existingCourse.courseType;
+            existingCourse.Price = Price || existingCourse.Price;
+            existingCourse.courseDescription = courseDescription || existingCourse.courseDescription;
+
+            await existingCourse.save();
+
+            res.status(200).json({ message: "Admin updated course", existingCourse });
+        } else {
+            res.status(403).json({ message: "User is not an admin" });
+        }
+
+    } catch (error) {
+        res.status(500).json(error);
     }
-    if(req.UserRole == "admin"){
-      
-        items.courseId= newcourseId || items.courseId
-        items.courseType=newcourseType || items.newcourseType
-        items.Price=newPrice || items.Price
-        items.courseDescription= newcourseDescription || items.courseDescription
+});
 
-        await response.save();
-        console.log(Course.get(courseName));
-        return res.status(200).json({
-            message: "Course updated successfully",
-            course: items,
-        });
-        
-    }else {
-        console.log("Course not found");
-        return res.status(404).json("Course not found");
-    }
-
-}) 
 
 // addCourse.post('/search',(req,res)=>{
 //     const {courseName,courseId,courseDescription,courseType}=req.body
@@ -164,19 +167,26 @@ try {
 
 
 
-// addCourse.delete('/delete/:name', async (req, res) => {
-//     const result = req.params.name;
-//     try {
-//         if (Course.has(result) ||req.UserRole=="admin") {
-//             Course.delete(result);
-//            res.status(200).json({message:"Course deleted successfully"});
-//         } else {
-//             res.status(404).json({message:"Course not found"});
-//         }
-//     } catch (error) {
-//         res.status(500).json(error);
-//     }
-// });
+addCourse.delete('/delete/:cname',authenticate, async (req, res) => {
+    const courseName = req.params.cname;
+    try {
+
+     const result = await Course.findOneAndDelete({courseName:courseName})   
+
+     if(!result){
+
+       return res.status(400).json({message:"No course name"});
+
+     }
+        if (req.UserRole === "admin") {
+           res.status(200).json({message:"Course deleted successfully"});
+        } else {
+            res.status(404).json({message:"User is no an admin"});
+        }
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
 
 adminRouter.get('/viewUser',authenticate,(req,res)=>{
     try{
@@ -195,7 +205,7 @@ adminRouter.get('/viewCourse', async(req,res)=>{
         if(getAllCourses){
            
             
-        res.send(Array.from(getAllCourses.entries()))
+        res.status(200).json(Array.from(getAllCourses.entries()))
     }
 else{
     res.status(404).json({message:'No Course added'});

@@ -52,15 +52,15 @@ async function viewCourse(){
 
                    const coursename=document.createElement("h1");
                    coursename.id='name';
-                   coursename.value=course[0]
-                   coursename.innerHTML=course[0];
+                   coursename.value=course[1].courseName
+                   coursename.innerHTML=course[1].courseName;
                    const image=document.createElement("img");
                    image.src="./download.png";
                    const description=document.createElement("p");
                    description.innerHTML=course[1].courseDescription;
                    const more=document.createElement("input");
                    more.onclick= function() {
-                    handleMore(course[0]);
+                    handleMore(course[1].courseName);
                    };
                    more.type='submit';
                    more.value='View More'

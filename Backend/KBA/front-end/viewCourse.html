@@ -47,7 +47,8 @@
       console.log(data);
       if (response.status !== 404) {
                 alert(data.message);
-                document.body.innerHTML = "<div class='flex justify-center items-center h-screen text-3xl text-gray-700'>Course has been deleted</div>";
+                // document.body.innerHTML = "<div class='flex justify-center items-center h-screen text-3xl text-gray-700'>Course has been deleted</div>";
+                window.location.href="./home.html"
             }
         }
 

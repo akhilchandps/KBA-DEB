@@ -76,7 +76,7 @@ adminRouter.post('/signup',async(req,res)=>{
         if(!result){
             res.status(400).json({message:"inavlid username"})
         }else{
-           const isValid= await bcrypt.compare(Password,result.Password)
+           const isValid=  await bcrypt.compare(Password,result.Password)
             console.log(isValid);
 
             if(isValid) {
