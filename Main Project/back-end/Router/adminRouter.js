@@ -414,7 +414,7 @@ try {
 
  
 
-//delete classname
+//delete Student
 
 
 adminRouter.delete('/deleteStudent/:studname',authMiddileware,async(req,res)=>{
@@ -501,7 +501,7 @@ adminRouter.get("/getSubjects", authMiddileware, async (req, res) => {
  });
 
 
- //upadate subjects
+ //update subjects
 
  adminRouter.patch('/updateSubject',authMiddileware,async(req,res)=>{
    
@@ -556,19 +556,15 @@ adminRouter.post("/addSubjectCombination", authMiddileware, async (req, res) => 
    const { className, subjectName } = req.body;
  
    try {
-     // Find the class by name
      const classResult = await Class.findOne({ className });
      if (!classResult) {
        return res.status(404).json({ message: "Class not found" });
      }
- 
-     // Find the subject by name
-     const subjectResult = await Subject.findOne({ SubjectName: subjectName });
+      const subjectResult = await Subject.findOne({ SubjectName: subjectName });
      if (!subjectResult) {
        return res.status(404).json({ message: "Subject not found" });
      }
  
-     // Check if the combination already exists
      const existingCombination = await SubjectCombination.findOne({
        class: className,
        subject: subjectName,
@@ -577,7 +573,6 @@ adminRouter.post("/addSubjectCombination", authMiddileware, async (req, res) => 
        return res.status(400).json({ message: "Combination already exists" });
      }
  
-     // Create the new subject combination
      const newCombination = new SubjectCombination({
        class: className,
        subject: subjectName,
@@ -590,30 +585,27 @@ adminRouter.post("/addSubjectCombination", authMiddileware, async (req, res) => 
    }
  });
  
- //update Addsubjectcombination
-
  adminRouter.patch("/UpdateAddSubjectCombination", authMiddileware, async (req, res) => {
    const { className, subjectName } = req.body;
- 
-   const result = await SubjectCombination.findOneAndUpdate({className:className,subjectName:subjectName},
-    { new: true }
-   )
-try {
-   if(result){
 
-      res.status(200).json({message:"SubjectCombination Updated"})
-   }else{
-      res.status(404).json({message:"Subjectname or classname is not found"})
+   try {
+      const result = await SubjectCombination.findOneAndUpdate(
+         { class: className, subject: subjectName },
+         { $set: { class: className, subject: subjectName } }, 
+         { new: true }
+      );
+
+      if (result) {
+         res.status(200).json({ message: "SubjectCombination Updated" });
+      } else {
+         res.status(404).json({ message: "Subjectname or classname is not found" });
+      }
+   } catch (error) {
+      res.status(500).json(error);
+      console.log(error);
    }
-} catch (error) {
-   res.status(500).json(error)
-   console.log(error);
-   
-}
+});
 
-       
-
- });
 
 
 adminRouter.get("/getclassId/:classname",authMiddileware,async(req,res)=>{
@@ -691,6 +683,29 @@ adminRouter.get("/getResult/:stuname", authMiddileware, async(req,res)=>{
  }
 
 })
+
+
+//result login
+
+adminRouter.post("/resultLogin",async(req,res)=>{
+
+   const {RollId,className} = req.body
+   const result = await Student.findOne({RollId:RollId})
+
+   const result2= await SubjectCombination.findOne({class:className})
+try {
+   if (result && result2) {
+      res.status(200).json({message:"Result Login Successful",result,result2});
+   } else {
+      res.status(404).json({message:"Roll ID or Class not found"});
+   }
+} catch (error) {
+   res.status(500).json(error)
+}
+
+})
+
+
 
 export {adminRouter}
 
