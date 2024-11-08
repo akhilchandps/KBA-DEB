@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Books</title>
+
+    <script>
+       window.onload = async () => {
+           const response = await fetch("http://127.0.0.1:2000/getAllBooks", {
+               method: "GET",
+               credentials: "include"
+           });
+           console.log(response);
+           
+           const data1 = await response.json();
+           console.log(data1);
+           
+           
+           if (response.status !== 404) {
+               const container = document.getElementById("cards");
+               container.innerHTML = '';
+               
+               data1.forEach(course => {
+                   const coursediv = document.createElement("div");
+                   coursediv.className = "border-2 border-red-500 p-4 bg-white rounded-lg shadow-md";
+
+                   const coursename = document.createElement("h1");
+                   coursename.className = "text-lg font-semibold";
+                   coursename.innerHTML = course[1].title;
+
+                   const image = document.createElement("img");
+                   image.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKnVp3abpKHU6VI-9TV3Rova8rKtVHp-b0Sg&s";
+                   image.className = "w-full h-48 object-cover rounded-md";
+
+                   const description = document.createElement("p");
+                   description.className = "text-gray-700 mt-2";
+                   description.innerHTML = course[1].author;
+
+                   const more = document.createElement("button");
+                   more.onclick = function() {
+                       handleMore(course[1].title);
+                      console.log( course[1].title);
+                      
+                   };
+                   more.className = "mt-4 py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700";
+                   more.textContent = 'View More';
+
+                   coursediv.appendChild(coursename);
+                   coursediv.appendChild(image);
+                   coursediv.appendChild(description);
+                   coursediv.appendChild(more);
+                   container.appendChild(coursediv);
+               });
+           } else {
+               window.location.href = '/notfound.html';
+           }
+       };
+
+       function handleMore(value1){
+
+// const more=document.getElementById("name").value;
+console.log(value1);
+localStorage.setItem('Book',value1);
+window.location.href='./viewBooks.html'
+
+}
+    </script>
+</head>
+<body class="bg-cover bg-no-repeat w-full h-screen bg-[rgba(0,0,0,0.8)] text-white" style="background-image: url('./images/anime-style-cozy-home-interior-with-furnishings.jpg');">
+    <!-- Cards container -->
+    <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-8 text-black"></div>
+</body>
+</html>
