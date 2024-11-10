@@ -38,8 +38,12 @@
            console.log(data);
            
            if(response.status == 200){
-               alert(data.message)
-               window.location.href="./formpage.html"
+
+            document.getElementById("Email").value="";
+            document.getElementById("Password").value = "";               
+            alert(data.message)
+            window.location.href="./homepage.html";
+
            }else if(response.status == 400){
        
                alert(data.message)

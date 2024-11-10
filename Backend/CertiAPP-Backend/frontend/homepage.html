@@ -8,6 +8,26 @@
 
     <script>
 
+window.onload=async()=>{
+
+ const response= await  fetch("http://127.0.0.1:4000/viewUser",{
+
+        method:"GET",
+        credentials:"include"
+    })
+
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+    if(data.user == "admin"){
+
+        document.getElementById("admin").style.display="block";
+    }
+    
+    
+}
+
+
      async function handleSearch(event){
      
     event.preventDefault();
@@ -40,9 +60,9 @@
 <body class="bg-slate-300	">
 
 <nav class="flex justify-end p-3 text-white">
-    <div>
+    <div class=" flex">
         <a href="" class="mx-4 bg-blue-600 px-3 py-2">Home</a>
-        <a href="formpage.html" class="mx-4 text-black">Issue Certificate</a>
+        <a href="formpage.html"  id="admin" style="display: none;" class="mx-4 text-black">Issue Certificate</a>
     </div>
 </nav>
 

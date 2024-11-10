@@ -27,7 +27,7 @@
             },
             body:JSON.stringify({
                 title:utitle,
-                author:utitle,
+                author:uathor,
                 genere:ugenere,
                 description:desc
               
@@ -40,6 +40,10 @@
      
 
      if(response.status == 200){
+        document.getElementById("utitle").value="";
+       document.getElementById("uathor").value="";
+      document.getElementById("ugenere").value="";
+       document.getElementById("desc").value="";
         alert(data.message)
         window.location.href="./viewbook.html"
      }else if(response.status == 400){

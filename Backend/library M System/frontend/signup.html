@@ -39,8 +39,12 @@
         console.log(data);
 
         if(response.status == 200){
-
+           document.getElementById("uname").value="";
+           document.getElementById("uemail").value="";
+           document.getElementById("pwd").value="";
+        const role=document.getElementById("role").value
              alert(data.message)
+             window.location.href="./login.html"
              
         }else if(response.status == 400){
 

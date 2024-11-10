@@ -102,4 +102,14 @@ issueCertificate.get('/getCertificate',authenticate,async(req,res)=>{
 
 
 })
+
+
+issueCertificate.get('/viewUser',authenticate,(req,res)=>{
+    try{
+    const user=req.UserRole;
+    res.json({user});}
+    catch{
+        res.status(404).json({message:'user not authorized'});
+    }
+})
 export {issueCertificate}

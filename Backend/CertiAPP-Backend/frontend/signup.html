@@ -45,6 +45,10 @@
     
     if(response.status == 201){
         alert(data.message)
+       document.getElementById("Username").value="";
+       document.getElementById("Email").value="";
+       document.getElementById("Password").value="";
+       document.getElementById("userType").value="";
         window.location.href="./login.html"
     }else if(response.status == 400){
         alert(data.message)

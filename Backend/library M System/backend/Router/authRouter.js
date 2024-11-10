@@ -115,10 +115,10 @@ adminRouters.post("/addBook",authMiddileware, async(req,res)=>{
 try {
     if(result){
 
-        res.status(400).json({message:"Book Already exist"})
+       return res.status(400).json({message:"Book Already exist"})
 
     }
-    else{
+     if( req.userRole == "Admin"){
 
         const newBook = new Book({
             title:title,
@@ -129,8 +129,11 @@ try {
         await newBook.save();
 
         res.status(200).json({message:"Book Added"})
+     }else{
+        res.status(401).json({message:"Unauthorized user"})
+     }
 
-    } 
+    
 } catch (error) {
     res.status(500).json(error)
     console.log(error);
@@ -184,6 +187,32 @@ adminRouters.get('/viewUser',authMiddileware,(req,res)=>{
     }
 })
 
+adminRouters.delete('/deleteBook/:ctitle',authMiddileware,async(req,res)=>{
+    try{
+    const title=req.params.ctitle;
+
+    const result = await Book.findOneAndDelete({title:title})
+   
+
+    if(!result){
+        return   res.status(401).json({message:"Book is not found"})
+    }
+
+    if(req.userRole == "Admin"){
+       return res.status(200).json({message:"Book Deleted"})
+    }else{
+        res.status(401).json({message:"error Unauthorized User"})
+    }
+}
+   catch(error){
+        res.status(500).json({message:error});
+    }
+})
+
+adminRouters.post('/logout',authMiddileware, (req, res) => {
+    res.clearCookie("bToken");
+    res.status(200).json({ message: "Logout successful" });
+});
 
 // adminRouters.get('/viewCourse', async(req,res)=>{
 

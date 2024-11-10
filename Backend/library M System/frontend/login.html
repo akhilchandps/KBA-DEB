@@ -31,7 +31,9 @@
         console.log(data);
 
         if(response.status == 200){
-
+            document.getElementById("uemail").value="";
+            document.getElementById("pwd").value="";
+       
              alert(data.message)
              window.location.href="./home.html"
         }else if(response.status == 400){
