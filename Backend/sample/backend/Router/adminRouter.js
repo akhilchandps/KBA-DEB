@@ -287,4 +287,40 @@ try {
 }
    
   })
+
+
+//   authRouter.patch('/updateClass',authMid,async(req,res)=>{
+   
+//     const {className,classNumeric,Section,Date} =req.body
+//  try {
+//     if(req.UserRole == "admin"){
+ 
+//        const result = await Class.findOneAndUpdate(
+//                         {className:className},{
+      
+//                       $set:{
+//                          classNumeric:classNumeric,
+//                          Section:Section,
+//                          Date:Date
+      
+//                       }
+                    
+//        }, { new: true });
+      
+//               if (result.matchedCount == 0) {
+//                 return res.status(400).json({ message: "Class not found" });
+//                  }
+//              res.status(200).json({message:"Class updated",UpdateClass:result})
+//        }else {
+//          res.status(400).json({ message: "Unauthorized Access" });
+//       }
+       
+//  } catch (error) {
+//     res.status(500).json({ message: "An error occurred. Please check the class details." });
+//  }
+ 
+//  })
+
+
+
 export {authRouter}
