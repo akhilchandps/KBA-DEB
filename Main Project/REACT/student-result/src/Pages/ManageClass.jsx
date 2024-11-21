@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ManageClass = () => {
   return (
@@ -28,7 +29,7 @@ const ManageClass = () => {
                 <td class="text-center md:p-5 p-2  border">C</td>
                 <td class="text-center md:p-5 p-2  border">2024-02-16</td>
                 <td class="text-center md:p-5 p-2  border flex justify-between">
-                    <a href="./updateclass.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
+                    <Link href="/UpdateClass"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></Link>
                     <button><i class="fa-solid fa-xmark text-rose-600"></i></button>
                   </td>
             </tr>
@@ -40,8 +41,8 @@ const ManageClass = () => {
                 <td class="text-center md:p-5 p-2  border">C</td>
                 <td class="text-center md:p-5 p-2  border">2024-02-16</td>
                 <td class="text-center md:p-5 p-2  border  flex justify-between">
-                    <a href="./updateclass.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                    <button><i class="fa-solid fa-xmark text-rose-600"></i></button>
+                <Link href="/UpdateClass"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></Link>
+                <button><i class="fa-solid fa-xmark text-rose-600"></i></button>
                   </td>
             </tr>
 
@@ -52,8 +53,8 @@ const ManageClass = () => {
                 <td class="text-center  md:p-5 p-2 border">C</td>
                 <td class="text-center  md:p-5 p-2 border">2024-02-16</td>
                 <td class="text-center  md:p-5 p-2 border  flex justify-between">
-                    <a href="./updateclass.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                    <button><i class="fa-solid fa-xmark text-rose-600"></i></button>
+                <Link href="/UpdateClass"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></Link>
+                <button><i class="fa-solid fa-xmark text-rose-600"></i></button>
                   </td>
             </tr>
 
@@ -64,8 +65,8 @@ const ManageClass = () => {
                 <td class="text-center  md:p-5 p-2 border">C</td>
                 <td class="text-center  md:p-5 p-2 border">2024-02-16</td>
                 <td class="text-center  md:p-5 p-2 border  flex justify-between">
-                  <a href="./updateclass.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                  <button><i class="fa-solid fa-xmark text-rose-600"></i></button>
+                <Link href="/UpdateClass"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></Link>
+                <button><i class="fa-solid fa-xmark text-rose-600"></i></button>
                 </td>
                 
             </tr>
@@ -77,8 +78,8 @@ const ManageClass = () => {
                 <td class="text-center  md:p-5 p-2 border">C</td>
                 <td class="text-center  md:p-5 p-2 border">2024-02-16</td>
                 <td class="text-center md:p-5 p-2 border  flex justify-between">
-                    <a href="./updateclass.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                    <button><i class="fa-solid fa-xmark text-rose-600"></i></button>
+                <Link href="/UpdateClass"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></Link>
+                <button><i class="fa-solid fa-xmark text-rose-600"></i></button>
                   </td>
             </tr>
         </table>

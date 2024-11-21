@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <>
       
-      <div className="col md:w-80 w-full  bg-[#024550] md:h-[115vh] h-[600px]">
+      <div className="col md:w-96 w-full  bg-[#024550] md:h-[115vh] h-[600px]">
             <div className="flex md:justify-between justify-center md:mt-14 mb-5 w-[165px] md:m-5">
               <div className="w-12">
                 <img src={cartoon} className="w-full rounded-full" alt=""/>
