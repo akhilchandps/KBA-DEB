@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import { authMiddileware } from "../MiddileWare/auth.js";
+
 dotenv.config();
 const adminRouter = Router();
 const secretKey=process.env.SecretKey;
@@ -160,6 +161,7 @@ try {
          
          res.cookie("aToken",token,{
             httpOnly:true,
+            secure: false, 
          });
 
          res.status(200).json({message:"Login Successfull"})
@@ -179,7 +181,7 @@ try {
 
 //create class
 
-adminRouter.post("/createClass",authMiddileware, async(req,res)=>{
+adminRouter.post("/createClass",authMiddileware,async(req,res)=>{
 
    const {className,classNumeric,Section,Date} =req.body
 
@@ -188,7 +190,7 @@ adminRouter.post("/createClass",authMiddileware, async(req,res)=>{
    try {
 
       if(existingClass){
-        return res.status(400).json({message:"Class Already Exist"})
+        return res.status(403).json({message:"Class Already Exist"})
       }
       if(req.UserRole == "Admin"){
       
@@ -200,9 +202,9 @@ adminRouter.post("/createClass",authMiddileware, async(req,res)=>{
             Date:Date
          })
    
-         newClass.save();
+        await newClass.save();
    
-         res.status(200).json({messge:"Class Added",newClass})
+         res.status(201).json({messge:"Class Added",newClass})
       }else{
          res.status(401).json("User not an Admin")
       }

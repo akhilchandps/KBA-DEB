@@ -20,7 +20,7 @@
             console.log(response);
             const data = await response.json();
             console.log(data);
-            document.getElementById("title").innerHTML=`${data.title} (${data.genere})`
+            document.getElementById("title").innerHTML=`${data.title} ${data.genere}`
             document.getElementById("author").innerHTML=`<b>Author</b>:${data.author}`
             document.getElementById("desc").innerHTML=`<b>Description</b>:${data.description}`
             

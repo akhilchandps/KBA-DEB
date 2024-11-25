@@ -8,8 +8,8 @@ dotenv.config();
 const app= express();
 app.use(json());
 app.use(cors({
-    origin:"http://localhost:5173",
-    credentials: true
+    origin:"http://localhost:3000",
+    credentials: true,
 }));
 app.use(cookieParser());
 app.use('/',adminRouter)
