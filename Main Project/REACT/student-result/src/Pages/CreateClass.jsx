@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Dashboard from '../Components/Dashboard';
 import img1 from "../assets/image/pexels-nietjuh-2008145.jpg";
+import { useNavigate } from 'react-router-dom';
 
 const CreateClass = () => {
  
@@ -8,7 +9,7 @@ const CreateClass = () => {
   // "classNumeric":"10",
   // "Section":"A",
   // "Date":"23-04-24"
-
+const navigate =useNavigate('');
 const [className,setClassName]=useState('')
 const [classNumeric,setClassNumeric]=useState('')
 const [Section,setSection]=useState('')
@@ -26,7 +27,7 @@ const handleClass=async(e)=>{
     Section,
     Date
   }
-  const response = await fetch("http://127.0.0.1:4000/createClass",{
+  const response = await fetch("http://127.0.0.1:5000/createClass",{
     method:"POST",
     credentials:"include",
     headers:{
@@ -34,7 +35,18 @@ const handleClass=async(e)=>{
    },
    body:JSON.stringify(newClass)
   })
-   console.log(response);
+   console.log(response.status);
+   const data = await  response.json()
+   if(response.status ==201){
+    alert(data.message)
+    navigate('/ManageClass')
+
+   }else if(response.status == 403){
+    alert(data.message)
+
+   }else if(response.status == 401){
+    alert(data.message)
+   }
    
 
 }

@@ -1,7 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Dashboard from '../Components/Dashboard';
-import img1 from  "../assets/image/pexels-moose-photos-170195-1037995.jpg"
+import img1 from  "../assets/image/pexels-moose-photos-170195-1037995.jpg";
+import { Link } from 'react-router-dom';
 const ManageSubject = () => {
+  const [subjectData,setSubjectData] =useState("")
+
+  const getAllSubjects =async()=>{
+
+    const response = await fetch("http://127.0.0.1:5000/getSubjects",{
+      method:"GET",
+      credentials:"include",
+
+    })
+    console.log(response);
+
+    const data = await response.json();
+    console.log(data);
+    setSubjectData(data)
+    
+    
+  }
+ 
+useEffect(()=>{
+  getAllSubjects();
+},[])
+
+const handleDelete = async (id) => {
+  try {
+    const response = await fetch(`http://127.0.0.1:5000/deleteSubject/${id}`, {
+      method: "DELETE",
+      credentials: "include",
+    });
+    if (response.ok) {
+      alert("Subject combination deleted successfully!");
+      getAllSubjects();
+    } else {
+      alert("Failed to delete the subjects");
+    }
+  } catch (error) {
+    console.log(error);
+    alert("An error occurred while deleting the subject combination.");
+  }
+};
   return (
     <>
          <div className="row md:flex md:justify-around align-center">
@@ -12,7 +52,8 @@ const ManageSubject = () => {
         <div className="col w-full" style={{ backgroundImage: `url(${img1})`, backgroundSize: 'cover'}}>
             <h1 className="text-3xl font-bold my-5  ml-12 text-[#024550]">MANAGE SUBJECTS</h1>
             <table className="border border-2 m-auto bg-[rgba(255,255,255,0.8)] mt-20 shadow-md shadow-black-600 ">
-                <tr>
+              <thead>
+              <tr>
                     <th className="text-center p-5 border">Sl No</th>
                     <th className="text-center p-5 border">Subject Name</th>
                     <th className="text-center p-5 border">Subject Code</th>
@@ -20,62 +61,32 @@ const ManageSubject = () => {
                     <th className="text-center p-5 border">Action</th>
                 
                 </tr>
+              </thead>
+            
+              <tbody>
+                { subjectData.length>0?(subjectData.map((item,index)=>(
+
+                         <tr key={index}>
+                         <td className="text-center p-5 border">{index+1}</td>
+                         <td className="text-center p-5 border">{item.SubjectName}</td>
+                         <td className="text-center p-5 border">{item.SubjectCode}</td>
+                         <td className="text-center p-5 border">{item.Date}</td>
+                         <td className="text-center p-5 border flex justify-between">
+                             <Link to={`/UpdateSubject/${item._id}`} ><i className="fa-solid fa-pen-to-square text-yellow-500"></i></Link>
+                             <button onClick={()=>handleDelete(item._id)}><i className="fa-solid fa-xmark text-rose-600"></i></button>
+                           </td>
+                     </tr>
+                ))):(
+                  <tr>
+                    <td colSpan="5" className="text-center p-5 border">No subjects available</td>
+                  </tr>
+                )
+                 
+                }
+              </tbody>
+             
     
-                <tr>
-                    <td className="text-center p-5 border">1</td>
-                    <td className="text-center p-5 border">Maths</td>
-                    <td className="text-center p-5 border">MATH01</td>
-                    <td className="text-center p-5 border">2024-02-16</td>
-                    <td className="text-center p-5 border flex justify-between">
-                        <a href="./updateSubject.html"><i className="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                        <button><i className="fa-solid fa-xmark text-rose-600"></i></button>
-                      </td>
-                </tr>
-    
-                <tr>
-                    <td className="text-center p-5 border">1</td>
-                    <td className="text-center p-5 border">Physics</td>
-                    <td className="text-center p-5 border">PHY06</td>
-                    <td className="text-center p-5 border">2024-02-16</td>
-                    <td className="text-center p-5 border flex justify-between">
-                        <a href="./updateSubject.html"><i className="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                        <button><i className="fa-solid fa-xmark text-rose-600"></i></button>
-                      </td>
-                </tr>
-    
-                <tr>
-                    <td className="text-center p-5 border">2</td>
-                    <td className="text-center p-5 border">Chemistry</td>
-                    <td className="text-center p-5 border">CHEM10</td>
-                    <td className="text-center p-5 border">2024-02-16</td>
-                    <td className="text-center p-5 border flex justify-between">
-                        <a href="./updateSubject.html"><i className="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                        <button><i className="fa-solid fa-xmark text-rose-600"></i></button>
-                      </td>
-                </tr>
-    
-                <tr>
-                    <td className="text-center p-5 border">1</td>
-                    <td className="text-center p-5 border">English</td>
-                    <td className="text-center p-5 border">ENG10</td>
-                    <td className="text-center p-5 border">2024-02-16</td>
-                    <td className="text-center p-5 border flex justify-between">
-                        <a href="./updateSubject.html"><i className="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                        <button><i className="fa-solid fa-xmark text-rose-600"></i></button>
-                      </td>
-                    
-                </tr>
-    
-                <tr>
-                    <td className="text-center p-5 border">5</td>
-                    <td className="text-center p-5 border">Science</td>
-                    <td className="text-center p-5 border">SC13</td>
-                    <td className="text-center p-5 border">2024-02-16</td>
-                    <td className="text-center p-5 border flex justify-between">
-                        <a href="./updateSubject.html"><i className="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                        <button><i className="fa-solid fa-xmark text-rose-600"></i></button>
-                      </td>
-                </tr>
+
             </table>
         </div>
         </div>

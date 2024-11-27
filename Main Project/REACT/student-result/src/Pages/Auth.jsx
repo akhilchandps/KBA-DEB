@@ -26,7 +26,7 @@ const Auth = ({ register }) => {
          Role
       }
 
-        const response = await fetch("http://127.0.0.1:4000/signup",{
+        const response = await fetch("http://127.0.0.1:5000/signup",{
             method:"POST",
             headers:{
                "Content-Type":"application/json"
@@ -55,8 +55,9 @@ const Auth = ({ register }) => {
             Email,
             Password
          }
-         const response = await fetch("http://127.0.0.1:4000/login",{
+         const response = await fetch("http://127.0.0.1:5000/login",{
             method:"POST",
+            credentials:"include",
             headers:{
                "Content-Type":"application/json"
             },
@@ -67,8 +68,26 @@ const Auth = ({ register }) => {
          console.log(data);
 
          if(response.status == 200){
-            alert(data.message)
-            navigate("/dashboard")
+
+            const res= await fetch("http://127.0.0.1:5000/viewUser",{
+               method:"GET",
+               credentials:"include"
+            })
+            console.log(res);
+            const data = await res.json()
+            console.log(data);
+            
+            if(data.user == "Admin"){
+              navigate("/dashboard")
+            }else{
+               navigate("/")
+            }
+            // if(data.)
+            
+            
+            // // alert(data.message)
+       
+
 
          }else if(response.status ==400){
             alert(data.message)
@@ -177,3 +196,48 @@ const Auth = ({ register }) => {
 }
 
 export default Auth
+
+
+
+// const Login = () => {
+//    const [Name, setName] = useState("");
+//    const [Password, setPassword] = useState("");
+//    const navigate = useNavigate();
+ 
+//    const loginSubmit = async (e) => {
+//      e.preventDefault();
+//      const loginDetails = {
+//        Name,
+//        Password,
+//      };
+//      const res = await fetch("/api/login", {
+//        method: "POST",
+//        headers: {
+//          "Content-Type": "application/json",
+//        },
+//        body: JSON.stringify(loginDetails),
+//        credentials: "include",
+//      });
+//      if (res.ok) {
+//        const data = await fetch("/api/viewUser", {
+//          headers: { "Content-Type": "application/json" },
+//        });
+       
+//        const user = await data.json();
+//        localStorage.setItem('Name', Name);
+//        console.log(user);
+//        console.log("Login success");
+ 
+ 
+//        toast.success("Logging in...");
+//        setTimeout(() => {
+//          if (user === "admin") {
+//            navigate("/AdminDash");
+//          } else {
+//            navigate("/UserDash");
+//          }
+//        }, 3000);
+//      } else {
+//        toast.error("Please check your credentials.");
+//      }
+//    };

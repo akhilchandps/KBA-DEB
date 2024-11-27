@@ -1,71 +1,214 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import Dashboard from '../Components/Dashboard';
+import {useNavigate, useParams } from 'react-router-dom';
 
 const UpdateStudent = () => {
-  return (
-    <>
-               <div className="row md:flex md:justify-around align-center">
+
+    const navigate = useNavigate();
+    const [data2, setData2] = useState([]);
+    const [FullName, setFullName] = useState('');
+    const [RollId, setRollId] = useState('');
+    const [Gender, setGender] = useState('');
+    const [Class, setClass] = useState('');
+    const [DOB, setDOB] = useState('');
+
+    const { id } = useParams();
+
+    // Fetch student details
+    const getStudentDetails = async () => {
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/getStudent/${id}`, {
+                method: 'GET',
+                credentials: 'include',
+            });
+            const data = await response.json();
+            console.log(data);
+
+            // Set individual states from fetched data
+            setFullName(data.FullName || '');
+            setRollId(data.RollId || '');
+            setGender(data.Gender || '');
+            setClass(data.Class || '');
+            setDOB(data.DOB || '');
+        } catch (error) {
+            console.error('Error fetching student details:', error);
+        }
+    };
+
+    // Fetch all classes
+    const getAllClasses = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:5000/getClasses', {
+                method: 'GET',
+                credentials: 'include',
+            });
+            const sdata = await response.json();
+            setData2(sdata);
+        } catch (error) {
+            console.error('Error fetching class data:', error);
+        }
+    };
+
+    useEffect(() => {
+        getStudentDetails();
+        getAllClasses();
+    }, []);
+
+    // Handle form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+      console.log(FullName,RollId,Gender,Class,DOB);
+      
+        const updatedData = {
+            FullName,
+            RollId,
+            Gender,
+            Class,
+            DOB,
+        };
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/updateStudent', {
+                method: 'PATCH',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedData),
+            }); 
+            console.log(response);
+            const data = await response.json();
+            console.log(data);
+            if (response.ok) {
+            alert(data.message);
+            navigate("/ManageStudent")
+            } else if(response.status == 404){
+                alert(data.message);
+            }
+        } catch (error) {
+            console.error('Error updating student:', error);
+        }
+
             
-            <div className="col">
-           <Dashboard/>
+
+            // const result = await response.json();
+            // console.log('Update response:', result);
+
+            // if (response.ok) {
+            //     alert('Student updated successfully!');
+            // } else {
+            //     alert(`Failed to update student: ${result.message}`);
+            // }
+      
+    };
+
+    return (
+        <>
+            <div className="row md:flex md:justify-around align-center">
+                <Dashboard />
+                <div className="col flex justify-center bg-[url('./image/5040007.jpg')] w-full bg-cover">
+                    <form
+                        className="md:w-[700px] w-[370px] bg-[rgba(0,120,205,0.5)] p-5 m-10 h-[430px] md:h-[500px]"
+                        onSubmit={handleSubmit}
+                    >
+                        <h1 className="text-3xl text-white font-bold my-6">Update Student Info</h1>
+
+                        <div className="flex justify-between my-5">
+                            <label htmlFor="fullName" className="text-white">
+                                Full Name
+                            </label>
+                            <input
+                                id="fullName"
+                                value={FullName}
+                                onChange={(e) => setFullName(e.target.value)}
+                                type="text"
+                                placeholder="Enter Full Name"
+                                required
+                                className="md:w-[500px] w-[250px] h-8 rounded-md pl-3"
+                            />
+                        </div>
+
+                        <div className="flex justify-between my-5">
+                            <label htmlFor="rollId" className="text-white">
+                                Roll ID
+                            </label>
+                            <input
+                                id="rollId"
+                                value={RollId}
+                                onChange={(e) => setRollId(e.target.value)}
+                                type="number"
+                                placeholder="Enter Roll ID"
+                                required
+                                className="md:w-[500px] w-[250px] h-8 rounded-md pl-3"
+                            />
+                        </div>
+
+                        <div className="flex justify-between my-5 text-white">
+                            <label>Gender</label>
+                            <div className="md:w-[500px] w-[200px]">
+                                <input
+                                    type="radio"
+                                    name="Gender"
+                                    value="Male"
+                                    checked={Gender === 'Male'}
+                                    onChange={(e) => setGender(e.target.value)}
+                                />
+                                <label htmlFor="male">Male</label>
+                                <input
+                                    type="radio"
+                                    name="Gender"
+                                    value="Female"
+                                    checked={Gender === 'Female'}
+                                    onChange={(e) => setGender(e.target.value)}
+                                />
+                                <label htmlFor="female">Female</label>
+                            </div>
+                        </div>
+
+                        <div className="flex justify-between my-5">
+                            <label htmlFor="className" className="text-white">
+                                Class Name
+                            </label>
+                            <select
+                                id="className"
+                                value={Class}
+                                onChange={(e) => setClass(e.target.value)}
+                                required
+                                className="md:w-[500px] w-[250px] h-8"
+                            >
+                                <option value="">Select Class</option>
+                                {data2.map((item, index) => (
+                                    <option key={index} value={item.className}>
+                                        {item.className}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="flex justify-between my-5">
+                            <label htmlFor="dob" className="text-white">
+                                DOB
+                            </label>
+                            <input
+                                id="dob"
+                                value={DOB}
+                                onChange={(e) => setDOB(e.target.value)}
+                                type="date"
+                                required
+                                className="md:w-[500px] w-[250px]"
+                            />
+                        </div>
+
+                        <div className="text-center">
+                            <button className="w-14 h-8 bg-green-600 text-white" type="submit">
+                                Update
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            
-            <div className="col flex justify-center bg-[url('./image/5040007.jpg')] w-full bg-cover" >
-    <form className="md:w-[700px] w-[370px]  bg-[rgba(0,120,205,0.5)] p-5 m-10 h-[430px] md:h-[500px]">
-        <h1 className="text-3xl text-white font-bold my-6">Update Student Info</h1>
-        
-        <div className="flex justify-between my-5">
-            <label for="" className="text-white">Full Name</label>
-            <div>
-                <input type="text" placeholder="Enter Full Name" required className="md:w-[500px] w-[250px]  h-8 rounded-md pl-3"/>
-            </div>
-        </div>
-        <div className="flex justify-between my-5">
-            <label for="" className="text-white">Roll id</label>
-            <div>
-                <input type="number" placeholder="Enter Roll Id" required className="md:w-[500px]  w-[250px]   h-8 rounded-md pl-3"/>
+        </>
+    );
+};
 
-            </div>
-        </div>
-        <div className="flex justify-between my-5 text-white">
-            <label for="">Gender</label>
-            <div className="md:w-[500px] w-[200px]"> 
-                <input type="radio" required/>
-                <label for="">Male</label>
-                <input type="radio" required/>
-                <label for="">Female</label>
-            </div>
-           
-        </div>
-
-        <div className="flex justify-between my-5">
-            <label for="" className="text-white">className</label>
-            <select name="" id="" className="md:w-[500px] w-[250px] h-8">
-                <option value="" selected>Select className</option>
-                <option value="">First section A</option>
-                <option value="">First section C</option>
-                <option value="">Tenth section A</option>
-                <option value="">Tenth section B</option>
-                <option value="">sixth section B</option>
-                <option value="">sixth section A</option>
-            </select>
-        </div>
-
-        <div className="flex justify-between my-5">
-            <label for="" className="text-white">DOB</label>
-            <input type="date" className="md:w-[500px] w-[250px]" required/>
-        </div>
-
-        <div  className="text-center">
-            <button className="w-14 h-8 bg-green-600 text-white" type="submit">Add</button>
-        </div>
-    </form>
-   </div>
-
-            </div>
-
-
-    </>
-  )
-}
-
-export default UpdateStudent
+export default UpdateStudent;

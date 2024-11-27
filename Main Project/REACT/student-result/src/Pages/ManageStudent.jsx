@@ -1,8 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Dashboard from '../Components/Dashboard'
-import img1 from "../assets/image/pexels-moose-photos-170195-1037995.jpg"
+import img1 from "../assets/image/pexels-moose-photos-170195-1037995.jpg";
+import { Link } from 'react-router-dom';
+
 
 const ManageStudent = () => {
+
+  const [datas,setDatas] = useState([])
+
+  const getAllStudent = async()=>{
+     
+    const response = await fetch("http://127.0.0.1:5000/getStudents",{
+      method:"GET",
+      credentials:"include"
+    })
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+    setDatas(data)
+    
+  }
+
+  useEffect(()=>{
+    getAllStudent()
+  },[])
+
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/deleteStudent/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      if (response.ok) {
+        alert("Student deleted successfully!");
+       getAllStudent();
+      } else {
+        alert("Failed to delete the student!");
+      }
+    } catch (error) {
+      console.log(error);
+      alert("An error occurred while deleting the student");
+    }
+  };
+
   return (
     <>
           <div class="row md:flex md:justify-around align-center">
@@ -13,79 +54,48 @@ const ManageStudent = () => {
         <div class="col w-full " style={{ backgroundImage: `url(${img1})`, backgroundSize: 'cover'}}>
             <h1 class="text-3xl font-bold my-5  ml-12 text-[#024550]">MANAGE STUDENTS</h1>
             <table class="border border-2 m-auto bg-[rgba(255,255,255,0.8)] mt-20 shadow-md shadow-black-600 ">
-                <tr>
+              <thead>
+               
+              <tr>
                     <th class="text-center p-5 border">Sl No</th>
                     <th class="text-center p-5 border">Student Name</th>
                     <th class="text-center p-5 border">Roll Id</th>
                     <th class="text-center p-5 border">Class</th>
-                    <th class="text-center p-5 border">Reg Date</th>
-                    <th class="text-center p-5 border">Status</th>
+                    <th class="text-center p-5 border">DOB</th>
                     <th class="text-center p-5 border">Action</th>
+
+                    
                 
                 </tr>
-    
-                <tr>
-                    <td class="text-center p-5 border">1</td>
-                    <td class="text-center p-5 border">Athira</td>
-                    <td class="text-center p-5 border">1001</td>
-                    <td class="text-center p-5 border">First C</td>
-                      <td class="text-center p-5 border">2024-08-10</td>
-                    <td class="text-center p-5 border text-green-600">Active</td>
-                    <td class="text-center p-5 border flex justify-between">
-                        <a href="./Addstudent.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                      </td>
-                </tr>
-    
-            
-                <tr>
-                    <td class="text-center p-5 border">2</td>
-                    <td class="text-center p-5 border">Akhil</td>
-                    <td class="text-center p-5 border">1002</td>
-                    <td class="text-center p-5 border">Fourth C</td>
-                    <td class="text-center p-5 border">2024-08-10</td>
-                    <td class="text-center p-5 border text-green-600">Active</td>
-                    <td class="text-center p-5 border flex justify-between">
-                        <a href="./Addstudent.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                      </td>
-                </tr>
-    
-              
-                <tr>
-                    <td class="text-center p-5 border">3</td>
-                    <td class="text-center p-5 border">Ranjith</td>
-                    <td class="text-center p-5 border">1003</td>
-                    <td class="text-center p-5 border">First B</td>
-                    <td class="text-center p-5 border">2024-08-10</td>
-                    <td class="text-center p-5 border text-green-600">Active</td>
-                    <td class="text-center p-5 border flex justify-between">
-                        <a href="./Addstudent.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                      </td>
-                </tr>
-    
-            
-                <tr>
-                    <td class="text-center p-5 border">3</td>
-                    <td class="text-center p-5 border">Bipin</td>
-                    <td class="text-center p-5 border">1004</td>
-                    <td class="text-center p-5 border">Third C</td>
-                    <td class="text-center p-5 border">2024-08-10</td>
-                    <td class="text-center p-5 border text-green-600">Active</td>
 
-                    <td class="text-center p-5 border flex justify-between">
-                        <a href="./Addstudent.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                      </td>
-                </tr>
-                <tr>
-                    <td class="text-center p-5 border">4</td>
-                    <td class="text-center p-5 border">Vishnu</td>
-                    <td class="text-center p-5 border">1005</td>
-                    <td class="text-center p-5 border">First D</td>
-                    <td class="text-center p-5 border">2024-02-16</td>
-                    <td class="text-center p-5 border text-green-600">Active</td>
-                    <td class="text-center p-5 border flex justify-between">
-                        <a href="./Addstudent.html"><i class="fa-solid fa-pen-to-square text-yellow-500"></i></a>
-                      </td>
-                </tr>
+              </thead>
+             <tbody>
+     {     
+            datas.length>0?(datas.map((item,index)=>(
+              <tr key={index}>
+              <td class="text-center p-5 border">{index+1}</td>
+              <td class="text-center p-5 border">{item.FullName}</td>
+              <td class="text-center p-5 border">{item.RollId}</td>
+              <td class="text-center p-5 border">{item.Class}</td>
+              <td class="text-center p-5 border">{item.DOB}</td>
+              <td class="text-center p-5 border flex justify-between">
+                  <Link to={`/UpdateStudent/${item.RollId}`}><i class="fa-solid fa-pen-to-square text-yellow-500"></i></Link>
+                  <button onClick={() => handleDelete(item.RollId)}>
+                        <i className="fa-solid fa-xmark text-rose-600"></i>
+                      </button>
+                </td>
+             
+          </tr>
+            ))):(
+              <tr>
+                <td colSpan="5" className="text-center p-5 border">No subject combinations available</td>
+              </tr>
+            )
+    }
+         
+             </tbody>
+    
+
             </table>
         </div>
         </div>

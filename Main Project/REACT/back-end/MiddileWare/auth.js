@@ -1,18 +1,52 @@
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-
-
+import dotenv from "dotenv";
 dotenv.config();
-const secretKey = process.env.SecretKey;
+const secretKey= process.env.JWTKEY
+
+const authMiddileware=(req,res,next)=>{
+const cookies= req.headers.cookie;
+console.log(cookies);
+const cookie= cookies.split(';');
+for(let cooki of cookie){
+   const [name,token]= cooki.trim().split('=');
+   if(name=='AuthToken'){
+    const verified= jwt.verify(token,secretKey);
+    console.log(verified);
+    req.Username = verified.Username;
+    req.UserRole = verified.Role;
+    console.log(verified);
+    
+    console.log(verified.Username);
+    console.log(verified.Role);
+    break;
+   }
+}
+next();
+}
+
+export {authMiddileware};
+
+
+
+// import jwt from "jsonwebtoken";
+// import dotenv from 'dotenv';
+
+
+// dotenv.config();
+// const secretKey = process.env.SecretKey;
 
 // const authMiddileware = (req, res, next) => {
+ 
 //   try {
-//     const token = req.cookies.aToken; // Read token from cookies
+ 
+//     const token = req.cookies.AuthToken;
+
+//     console.log("tets", token)
 //     if (!token) {
+       
 //       return res.status(401).json({ message: "Authentication token not found" });
 //     }
 
-//     // Verify token
 //     const verify = jwt.verify(token, secretKey);
 //     req.Username = verify.Username;
 //     req.UserRole = verify.Role;
@@ -31,26 +65,8 @@ const secretKey = process.env.SecretKey;
 // };
 
 
-const authMiddileware = (req, res, next) => {
-  const token = req.cookies.aToken;
-  if (!token) {
-    return res.status(401).json({ message: 'Unauthorized: No token provided' });
-  }
-
-  try {
-    const decoded = jwt.verify(token, secretKey);
-    console.log(decoded);
-    console.log(decoded.Username);
-    console.log(decoded.Role);
-
-    req.UserRole = decoded.Username
-    req.UserRole = decoded.Role; // Attach decoded user data to the request
-    next();
-  } catch (err) {
-    res.status(401).json({ message: 'Unauthorized: Invalid token' });
-  }
-};
 
 
 
-export { authMiddileware };
+
+// export { authMiddileware };

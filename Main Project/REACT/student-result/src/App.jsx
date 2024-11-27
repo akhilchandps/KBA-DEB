@@ -34,13 +34,13 @@ function App() {
       
       <Route path='/CreateClass' element={<CreateClass/>}/>
       <Route path='/ManageClass' element={<ManageClass/>}/>
-      <Route path='/UpdateClass' element={<UpdateClass/>}/>
+      <Route path='/UpdateClass/:id' element={<UpdateClass/>}/>
       <Route path='/AddStudent' element={<AddStudent/>}/>
       <Route path='/ManageStudent' element={<ManageStudent/>}/>
-      <Route path='/UpdateStudent' element={<UpdateStudent/>}/>
+       <Route path='/UpdateStudent/:id' element={<UpdateStudent/>}/>
       <Route path='/CreateSubject' element={<CreateSubject/>}/>
       <Route path='/ManageSubject' element={<ManageSubject/>}/>
-      <Route path='/UpdateSubject' element={<UpdateSubject/>}/>
+      <Route path='/UpdateSubject/:id' element={<UpdateSubject/>}/>
       <Route path='/SubjectCombo' element={<AddSubjectCombination/>}/>
       <Route path='/ManageSubCombo' element={<ManageSubCombo/>}/>
       <Route path='/AddResult' element={<AddResult/>}/>
