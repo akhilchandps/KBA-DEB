@@ -18,6 +18,7 @@ import ManageSubCombo from './Pages/ManageSubCombo';
 import AddResult from './Pages/AddResult';
 import ManageResult from './Pages/ManageResult';
 import AdminChangePwd from './Pages/AdminChangePwd';
+import UserDashBoard from './Pages/UserDashBoard';
 
 
 
@@ -46,6 +47,9 @@ function App() {
       <Route path='/AddResult' element={<AddResult/>}/>
       <Route path='/ManageResult' element={<ManageResult/>}/>
       <Route path='/AdminChangePwd' element={<AdminChangePwd/>}/>
+      <Route path='/userDashboard' element={<UserDashBoard/>}/>
+
+
 
   
 

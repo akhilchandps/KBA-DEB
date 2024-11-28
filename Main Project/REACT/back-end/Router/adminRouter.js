@@ -48,14 +48,27 @@ const Class = mongoose.model("classDetails", classSchema)
 
 const StudentSchema = new mongoose.Schema({
 
-   FullName: String,
+   FullName: {
+      required:true,
+      type:String
+   },
    RollId: {
+      required:true,
       type: String,
       unique: true
    },
-   Gender: String,
-   Class: String,
-   DOB: String
+   Gender:{
+      required:true,
+       type: String,
+   } ,
+   Class:{
+      required:true,
+      type: String,
+   },
+   DOB:{
+     required:true,
+      type: String,
+   } 
 
 
 })
@@ -367,7 +380,7 @@ const { className, classNumeric, Section, Date } = req.body
 //delete classname
 
 
-adminRouter.delete('/deleteUser/:classname', authMiddileware, async (req, res) => {
+adminRouter.delete('/deleteClass/:classname', authMiddileware, async (req, res) => {
    const className = req.params.classname
    try {
       const result = await Class.findOneAndDelete({ className: className })
@@ -389,11 +402,15 @@ adminRouter.delete('/deleteUser/:classname', authMiddileware, async (req, res) =
 adminRouter.post("/addStudent", authMiddileware, async (req, res) => {
 
    const { FullName, RollId, Gender,Class, DOB } = req.body
-
+   
+   const getClass = await SubjectCombination.findOne({class:Class})
    const existingStudentId = await Student.findOne({ RollId: RollId })
 
    try {
-
+       
+      if(!getClass){
+         return res.status(404).json({message:"class name is found"})
+      }
       if (existingStudentId) {
          return res.status(409).json({message:"Student ID Already Exist"})
       }

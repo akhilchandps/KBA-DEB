@@ -24,7 +24,23 @@ const ManageclassName = () => {
     getAllclassNamees();
   }, []);
 
-
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/deleteClass/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      if (response.ok) {
+        alert("Class deleted successfully!");
+       getAllclassNamees();
+      } else {
+        alert("Failed to delete class.");
+      }
+    } catch (error) {
+      console.log(error);
+      alert("An error occurred while deleting the subject combination.");
+    }
+  };
   return (
     <>
          <div className="row md:flex md:justify-around align-center">
@@ -58,7 +74,7 @@ const ManageclassName = () => {
       <td className="text-center md:p-5 p-2  border">{item.Date}</td>
       <td className="text-center md:p-5 p-2  border flex justify-between">
           <Link to={`/UpdateClass/${item._id}`}><i className="fa-solid fa-pen-to-square text-yellow-500"></i></Link>
-          <button><i className="fa-solid fa-xmark text-rose-600"></i></button>
+          <button onClick={()=>handleDelete(item._id)}><i className="fa-solid fa-xmark text-rose-600"></i></button>
         </td>
   </tr>
      ))):("No Data")

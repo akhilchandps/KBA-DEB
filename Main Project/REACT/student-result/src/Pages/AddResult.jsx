@@ -4,6 +4,8 @@ import img1 from "../assets/image/result-3236285_1280.jpg"
 const AddResult = () => {
 
  const [datas,setDatas] = useState("")
+ const [rollid,SetRollId] = useState("")
+ const [getAllStudents,SetGetAllStudents] = useState("")
     const getAllclassName = async () => {
         const response = await fetch("http://127.0.0.1:5000/getClasses", {
           method: "GET",
@@ -17,9 +19,41 @@ const AddResult = () => {
         
         setDatas(data);
       };
+
+      const getStudents = async()=>{
+        const res= await fetch("http://127.0.0.1:5000/getStudents",{
+          method:"GET",
+          credentials:"include"
+        })
+        console.log(res);
+
+        const data = await res.json();
+        console.log(data);
+        SetGetAllStudents(data)
+        SetRollId(data.RollId)
+        
+        
+      }
+
+      const getOneStudent  = async()=>{
+        const res= await fetch(`http://127.0.0.1:5000/getStudent/${rollid}`,{
+          method:"GET",
+          credentials:"include"
+        })
+        console.log(res);
+
+        const data = await res.json();
+        console.log(data);
+        SetGetAllStudents(data)
+      }
+
+    
+ 
+
     
       useEffect(() => {
-        getAllclassName();
+        getStudents();
+        getOneStudent();
       }, []);
 
 
@@ -34,16 +68,28 @@ const AddResult = () => {
                 <div>
                     <h1 className="text-3xl font-bold text-[#024550]">Declare Result</h1>
                 </div>
+              <div className='flex justify-between my-5'>
+              <label htmlFor="" className=''>RollId</label>
+                    
+                    <select name="" id="" className="w-[500px] h-8">
+                <option value="">Select</option>
+                        {
+                          getAllStudents.length > 0 && (getAllStudents.map((item,index)=>(
+                            <option value={item.RollId} key={index}>{item.RollId}</option>
+                          )))
+                        }
+                    </select>
+              </div>
                 <div className="flex justify-between my-5">
                     <label htmlFor="">className</label>
                     
-                        <select name="" id="" className="w-[500px] h-8">
+                        <select value="" name="" id="" className="w-[500px] h-8">
                             <option value="">Select</option>
                             {
-                              datas.length > 0 ? (datas.map((item,index)=>(
-                                <option value="" key={index}>{item.className}</option>
-                              ))):""
-                            }
+                          datas.length > 0 && (datas.map((item,index)=>(
+                            <option value={item.className} key={index}>{item.className}</option>
+                          )))
+                        }
                         </select>
                   
                  

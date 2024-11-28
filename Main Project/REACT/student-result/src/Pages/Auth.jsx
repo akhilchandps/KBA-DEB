@@ -78,16 +78,12 @@ const Auth = ({ register }) => {
             console.log(data);
             
             if(data.user == "Admin"){
+               alert("Login Succesfull")
               navigate("/dashboard")
+              
             }else{
-               navigate("/")
+               navigate("/userDashboard")
             }
-            // if(data.)
-            
-            
-            // // alert(data.message)
-       
-
 
          }else if(response.status ==400){
             alert(data.message)
