@@ -86,7 +86,7 @@ const handleStudent = async(e)=>{
                     <form  onSubmit={handleStudent}  className="md:w-[700px] w-[370px] bg-[rgba(0,120,205,0.5)] p-5 m-10 h-[430px] md:h-[500px]">
                         <h1 className="text-3xl text-white font-bold my-6">Fill the Student Info</h1>
 
-                        {/* Full Name */}
+                      
                         <div className="flex justify-between my-5">
                             <label htmlFor="fullName" className="text-white">
                                 Full Name
@@ -120,7 +120,7 @@ const handleStudent = async(e)=>{
                             </div>
                         </div>
 
-                        {/* Gender */}
+                   
                         <div className="flex justify-between my-5 text-white">
                             <label htmlFor="gender">Gender</label>
                             <div className="md:w-[500px] w-[200px]">
@@ -150,7 +150,7 @@ const handleStudent = async(e)=>{
                             </div>
                         </div>
 
-                        {/* Class Dropdown */}
+                    
                         <div className="flex justify-between my-5">
                             <label htmlFor="className" className="text-white">
                                 Class Name
@@ -170,7 +170,7 @@ const handleStudent = async(e)=>{
                             </select>
                         </div>
 
-                        {/* Date of Birth */}
+                   
                         <div className="flex justify-between my-5">
                             <label htmlFor="dob" className="text-white">
                                 DOB
@@ -184,7 +184,7 @@ const handleStudent = async(e)=>{
                             />
                         </div>
 
-                        {/* Submit Button */}
+                        
                         <div className="text-center">
                             <button className="w-14 h-8 bg-green-600 text-white" type="submit">
                                 Add

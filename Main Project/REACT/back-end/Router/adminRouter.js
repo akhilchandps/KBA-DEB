@@ -96,19 +96,30 @@ const subjectCombinationSchema = new mongoose.Schema({
 
 const SubjectCombination = mongoose.model("SubjectCombinations", subjectCombinationSchema);
 
+// const resultSchema = new mongoose.Schema({
+
+//    Class: String,
+//    StudentName: String,
+//    Mark1: String,
+//    Mark2: String,
+//    Mark3: String
+// });
+
+// const Result = mongoose.model("resultDetails", resultSchema)
+
 const resultSchema = new mongoose.Schema({
-
-   Class: String,
-   StudentName: String,
-   Mark1: String,
-   Mark2: String,
-   Mark3: String
-});
-
-const Result = mongoose.model("resultDetails", resultSchema)
-
-
-
+   RollId: { type: String, required: true },
+   Class: { type: String, required: true },
+   FullName: { type: String, required: true },
+   Marks: [
+     {
+       subject: { type: String, required: true },
+       score: { type: Number, required: true, min: 0, max: 100 },
+     },
+   ],
+ });
+ 
+ const Result= mongoose.model('Result', resultSchema);
 
 mongoose.connect("mongodb://localhost:27017/Student-Result")
 
@@ -305,42 +316,6 @@ adminRouter.get("/getClass/:id", authMiddileware, async (req, res) => {
    }
 
 })
-
-
-//update class
-// const { className, classNumeric, Section, Date } = req.body
-
-// adminRouter.patch('/updateClass', authMiddileware, async (req, res) => {
-
-//    const { className, classNumeric, Section, Date } = req.body
-//    try {
-//       if (req.UserRole == "admin") {
-
-//          const result = await Class.findOneAndUpdate(
-//             { className: className }, {
-
-//             $set: {
-//                classNumeric: classNumeric,
-//                Section: Section,
-//                Date: Date
-
-//             }
-
-//          }, { new: true });
-
-//          if (result.matchedCount == 0) {
-//             return res.status(400).json({ message: "Class not found" });
-//          }
-//          res.status(200).json({ message: "Class updated", UpdateClass: result })
-//       } else {
-//          res.status(400).json({ message: "Unauthorized Access" });
-//       }
-
-//    } catch (error) {
-//       res.status(500).json({ message: "An error occurred. Please check the class details." });
-//    }
-
-// })
 
 adminRouter.put('/updateClass/:id',authMiddileware,async(req,res)=>{
    const { id } = req.params;
@@ -629,38 +604,6 @@ adminRouter.put('/updateSubject/:id',authMiddileware,async(req,res)=>{
 })
 
 
-// adminRouter.patch('/updateSubject', authMiddileware, async (req, res) => {
-
-//    const { SubjectName, SubjectCode, Date } = req.body
-//    try {
-//       if (req.UserRole == "admin") {
-
-//          const result = await Subject.findOneAndUpdate(
-//             { SubjectName: SubjectName }, {
-
-//             $set: {
-
-//                SubjectCode: SubjectCode,
-//                Date: Date
-//             }
-
-//          }, { new: true });
-
-//          if (result.matchedCount == 0) {
-//             return res.status(400).json({ message: "Subjects not found" });
-//          }
-//          res.status(200).json({ message: "Student Deatils Updated", UpdateSubject: result })
-//       } else {
-//          res.status(400).json({ message: "Unauthorized Access" });
-//       }
-
-//    } catch (error) {
-//       res.status(500).json({ message: "An error occurred. Please check the Student details." });
-//    }
-
-// })
-
-
 //delete subject001
 adminRouter.delete('/deleteSubject/:id', authMiddileware, async (req, res) => {
    const id = req.params.id;
@@ -710,6 +653,23 @@ adminRouter.post("/addSubjectCombination", authMiddileware, async (req, res) => 
       res.status(500).json({ message: "An error occurred", error });
    }
 });
+
+adminRouter.get('/getSubjectClass/:id',async(req,res)=>{
+   const classes= req.params.id
+   const getClass = await SubjectCombination.find({class:classes})
+   try {
+      if(getClass){
+         res.status(200).json(getClass)
+       }else{
+         res.status(404).json({message:"Not found classname"})
+   
+       }
+   } catch (error) {
+      res.status(500).json({ message: "An error occurred", error });
+
+   }
+
+})
 
 adminRouter.get('/getSubjectCombinations',authMiddileware, async (req, res) => {
    try {
@@ -858,51 +818,44 @@ adminRouter.post("/resultLogin", async (req, res) => {
 
 })
 
-adminRouter.get('/getStudents/:className', async (req, res) => {
-   const { className } = req.params;
-   try {
-     const students = await Student.find({ className }); // Adjust to your model and logic
-     res.json(students);
-   } catch (error) {
-     res.status(500).json({ message: "Error fetching students", error });
-   }
- });
 
- adminRouter.get('/getSubjectsByClass/:className', async (req, res) => {
-   const { className } = req.params;
+//logout 
+adminRouter.post('/logout', (req, res) => {
    try {
-     const subjects = await Subject.find({ className }); // Adjust to your model and logic
-     res.json(subjects);
+      res.clearCookie('AuthToken', { httpOnly: true });
+      res.status(200).json({ message: 'Logout successful' });
    } catch (error) {
-     res.status(500).json({ message: "Error fetching subjects", error });
+      res.status(500).json({ message: 'An error occurred during logout', error });
+   }
+});
+
+adminRouter.post('/addResult', async (req, res) => {
+   try {
+     const { RollId, Class, FullName, Marks } = req.body;
+ 
+     const result = await Result.findOne({RollId,RollId})
+      
+     if(result){
+      res.status(409).json({message:"Result Already Declared"})
+     }else{
+      const newResult = new Result({
+         RollId,
+         Class,
+         FullName,
+         Marks,
+       });
+   
+       await newResult.save();
+       res.status(201).json({ message: 'Result declared successfully' });
+     }  
+   } catch (error) {
+     res.status(500).json({ error: 'Failed to declare result' });
    }
  });
  
-//  adminRouter.get("/getClassDetails/:className", authMiddileware, async (req, res) => {
-//    const { className } = req.params;
 
-//    try {
-//       // Get the class
-//       const classResult = await Class.findOne({ className });
-//       if (!classResult) {
-//          return res.status(404).json({ message: "Class not found" });
-//       }
 
-//       // Get students for the class
-//       const students = await Student.find({ Class: className });
 
-//       // Get subjects associated with the class (via SubjectCombination)
-//       const subjectCombinations = await SubjectCombination.find({ class: className }).populate("subject");
-
-//       // Map subject combinations to just the subject names
-//       const subjects = subjectCombinations.map(item => item.subject.SubjectName);
-
-//       res.status(200).json({ class: classResult, students, subjects });
-//    } catch (error) {
-//       console.error("Error fetching class details:", error);
-//       res.status(500).json({ message: "An error occurred", error });
-//    }
-// });
 
 adminRouter.get('/viewUser',authMiddileware,(req,res)=>{
    try{

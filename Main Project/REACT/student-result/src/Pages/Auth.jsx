@@ -109,15 +109,15 @@ const Auth = ({ register }) => {
                      <>
                         <label for="">FirstName</label>
                         <div>
-                           <input onChange={(e) => setFirstName(e.target.value)} type="text" placeholder="FirstName" className="w-full h-9 my-2 pl-5" />
+                           <input required onChange={(e) => setFirstName(e.target.value)} type="text" placeholder="FirstName" className="w-full h-9 my-2 pl-5" />
                         </div>
                         <label for="">LastName</label>
                         <div>
-                           <input onChange={(e) => setLastName(e.target.value)} type="text" placeholder="LastName" className="w-full h-9 my-2 pl-5" />
+                           <input required onChange={(e) => setLastName(e.target.value)} type="text" placeholder="LastName" className="w-full h-9 my-2 pl-5" />
                         </div>
                         <label for="">Username</label>
                         <div>
-                           <input onChange={(e) => setUserName(e.target.value)} type="text" placeholder="enter Username" className="w-full h-9 my-2 pl-5" />
+                           <input required onChange={(e) => setUserName(e.target.value)} type="text" placeholder="enter Username" className="w-full h-9 my-2 pl-5" />
                         </div>
                      </>
 
@@ -125,24 +125,24 @@ const Auth = ({ register }) => {
 
                   <label for="">Email</label>
                   <div>
-                     <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="password" className="w-full h-9 my-2 pl-5" />
+                     <input required onChange={(e) => setEmail(e.target.value)} type="email" placeholder="password" className="w-full h-9 my-2 pl-5" />
                   </div>
                   <label for="">Password</label>
                   <div>
-                     <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" className="w-full h-9 my-2 pl-5" />
+                     <input required onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" className="w-full h-9 my-2 pl-5" />
                   </div>
                   <div className='my-2'>
                      {register && (
-                        <select
+                        <select required
                            name="Role"
-                           value={Role} // Ensures the Role state reflects the current selection
+                           value={Role} 
                            className="p-1 text-white bg-sky-400 border border-none outline-none"
                            onChange={(e) => {
-                              setRole(e.target.value); // Updates the Role state
-                              console.log(e.target.value); // Logs the selected value for debugging
+                              setRole(e.target.value);
+                              console.log(e.target.value); 
                            }}
                         >
-                           <option value="" disabled>Select Role</option> {/* Placeholder option */}
+                           <option value="" disabled>Select Role</option> 
                            <option value="Admin">Admin</option>
                            <option value="User">User</option>
                         </select>

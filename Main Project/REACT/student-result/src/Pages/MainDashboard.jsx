@@ -1,10 +1,13 @@
-import React from 'react'
+import React from 'react';
+
 import Dashboard from '../Components/Dashboard'
 import img1 from "../assets/image/377105-PBR732-669.jpg"
 import img2 from "../assets/image/creative-7581718_1920.jpg"
 import img3 from "../assets/image/creative-7581718_1920.jpg"
 import img4 from "../assets/image/texture-7515225_1920.jpg"
 const MainDashboard = () => {
+
+
   return (
     <div>
         <div className="row md:flex md:justify-around align-center">

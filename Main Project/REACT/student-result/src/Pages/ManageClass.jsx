@@ -49,7 +49,7 @@ const ManageclassName = () => {
   
 
        <div className="col  md:w-full bg-[url(./image/pexels-moose-photos-170195-1037995.jpg)] bg-cover">
-        <h1 className="text-3xl font-bold my-5  ml-12 text-[#024550]">VIEW classNameES INFO</h1>
+        <h1 className="text-3xl font-bold my-5  ml-12 text-[#024550]">VIEW className3</h1>
         <table className=" border border-2    md:m-auto bg-[rgba(255,255,255,0.8)] md:mt-20 shadow-md shadow-black-600 ">
           <thead>
           <tr>
@@ -74,7 +74,7 @@ const ManageclassName = () => {
       <td className="text-center md:p-5 p-2  border">{item.Date}</td>
       <td className="text-center md:p-5 p-2  border flex justify-between">
           <Link to={`/UpdateClass/${item._id}`}><i className="fa-solid fa-pen-to-square text-yellow-500"></i></Link>
-          <button onClick={()=>handleDelete(item._id)}><i className="fa-solid fa-xmark text-rose-600"></i></button>
+          <button onClick={()=>handleDelete(item.className)}><i className="fa-solid fa-xmark text-rose-600"></i></button>
         </td>
   </tr>
      ))):("No Data")

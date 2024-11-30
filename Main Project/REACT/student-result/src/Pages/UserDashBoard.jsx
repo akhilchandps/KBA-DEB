@@ -1,11 +1,73 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import img from "../assets/image/security-camera-3174223_1280.jpg";
+import { useNavigate } from 'react-router-dom';
 
 const UserDashBoard = () => {
+
+
+  const [datas, setDatas] = useState([]);
+  const [RollId, setRollId] = useState("")
+  const [classes,setClassName] = useState("")
+ 
+  const navigate = useNavigate();
+
+
+  const getAllclassNamees = async () => {
+    const response = await fetch("http://127.0.0.1:5000/getClasses", {
+      method: "GET",
+      credentials:"include"
+    });
+    console.log(response);
+    
+    const data = await response.json();
+    console.log(data);
+    setDatas(data)
+    
+    setDatas(data);
+  };
+
+  useEffect(() => {
+    getAllclassNamees();
+  }, []);
+
+//login
+
+const handleLogin= async(e)=>{
+  e.preventDefault();
+  const userData={
+    RollId:RollId,
+    className:classes
+
+  }
+  const res = await fetch("http://127.0.0.1:5000/resultLogin",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify(userData)
+  })
+  console.log(res);
+  const setdata = await res.json()
+  console.log(setdata);
+
+  if(res.ok){
+    localStorage.setItem("rollId",RollId)
+    alert(setdata.message)
+  }else{
+    alert(setdata.message)
+  }
+  
+  
+
+}
+
+
+
   return (
     <>
-          <div className="row md:flex md:justify-around align-center">
+
+    <div className="row md:flex md:justify-around align-center">
       
-    
 
       <div className="col md:w-80 w-full  bg-[#024550] md:h-[101vh] h-[600px]">
           <div className="flex md:justify-between justify-center md:mt-14 mb-5 w-[165px] md:m-5">
@@ -28,37 +90,41 @@ const UserDashBoard = () => {
 
         </div>
  
-{/* <!-- //col --> */}
 
-      <div className="col w-full bg-[url(./image/377105-PBR732-669.jpg)] md:bg-cover  ">
+
+      <div className="col w-full bg-cover md:bg-cover  "   style={{ backgroundImage: `url(${img})` }}>
           <div className=" flex justify-center ">
          
-              <form className="w-3/5 col bg-[rgba(255,255,255,0.8)] p-10 mt-20">
+              <form onSubmit={handleLogin}  className="w-3/5 col bg-[rgba(255,255,255,0.8)] p-10 mt-20">
                   <div className="my-4 text-2xl text-center font-bold">
                       <h1>School result Management System</h1>
                   </div>
             
                   <label for="">Enter Roll No Id</label>
                   <div className="my-3">
-                      <input type="text" className="w-full h-8 pl-5" placeholder="Enter your roll no Id"/>
+                      <input onChange={(e)=>setRollId(e.target.value)} type="text" className="w-full h-8 pl-5" placeholder="Enter your roll no Id"/>
                   </div>
                   <label for="">className</label>
                   <div className="my-3">
-                    <select name="" id="" className="w-full h-8 pl-5">
+                    <select name="" onChange={(e)=>setClassName(e.target.value)}  id="" className="w-full h-8 pl-5" >
                       <option value="" selected>Select className</option>
-                      <option value="">Fourth sectionc</option>
-                      <option value="">Third Section A</option>
-                      <option value="">Tenth Section B</option>
-                      <option value="">Third Section C</option>
+                      {
+                        datas.map((item,index)=>(
+                         
+                          <option key={index} value={item.className}>{item.className}</option>
+                        ))
+                     
+
+                      }
                     </select>
                   </div>
   
                   <div className=" flex justify-end">
-                      <button className="bg-green-500 text-white px-3 py-1"><a href="./Result.html">Search</a></button>
+                      <button className="bg-green-500 text-white px-3 py-1">Search</button>
                   </div>
-                  <div>
+                  {/* <div>
                       <button className="bg-black text-white p-2"><a href="./home.html">Back to home</a></button>
-                  </div>
+                  </div> */}
               </form>
           </div>
            </div>

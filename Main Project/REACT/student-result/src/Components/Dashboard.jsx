@@ -1,8 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+
 import cartoon from "../assets/image/3d-cartoon-portrait-person-practicing-law-related-profession.jpg";
 import { Link } from 'react-router-dom';
 import "../Components/Dashboard.css"
 const Dashboard = () => {
+
+  const [user,SetUser] = useState("")
+
+  const handleLogout = async () => {
+    try {
+       const res = await fetch("http://127.0.0.1:5000/logout", {
+          method: "POST", 
+          credentials: "include", 
+       });
+ 
+       if (res.ok) {
+          const data = await res.json();
+          alert(data.message || "Logged out successfully!");
+           localStorage.clear();
+        
+           window.location.href = "/login";
+       } else {
+          console.error("Logout failed");
+          alert("Failed to log out. Please try again.");
+       }
+    } catch (error) {
+       console.error("Error logging out:", error);
+       alert("An unexpected error occurred. Please try again later.");
+    }
+ };
+ 
+  useEffect(()=>{
+   const data= localStorage.getItem("user")
+   SetUser(data)
+  },[])
   return (
     <>
       
@@ -11,7 +42,7 @@ const Dashboard = () => {
               <div className="w-12">
                 <img src={cartoon} className="w-full rounded-full" alt=""/>
               </div>
-              <Link to="/dashboard" className="text-3xl font-bold text-white text-center">Admin</Link>
+              <Link to="/dashboard" className="text-3xl font-bold text-white text-center">{user}</Link>
             </div> 
             <hr/>
             <div className="dropdown flex flex-col items-center md:flex-row">
@@ -75,13 +106,13 @@ const Dashboard = () => {
                     
                     </div>
                   </div>
-  
+{/*   
                   <div className="dropdown md:w-52 flex flex-col items-center md:flex-row">
                     <button className="dropbtn  md:text-xl text-sm  font-bold  text-white"><i className="fa-solid fa-lock mr-3"></i><Link to="/AdminChangePwd">Admin Change Password</Link></button>
-                  </div>  
+                  </div>   */}
     
                   <div className="dropdown md:w-52 flex flex-col items-center md:justify-center  md:flex-row">
-                    <button className="dropbtn  md:text-xl text-sm  font-bold  text-white"><i className="fa-solid fa-right-from-bracket mr-3"></i><Link to="./Adminlogin.html">LogOut</Link></button>
+                    <button onClick={handleLogout} className="dropbtn  md:text-xl text-sm  font-bold  text-white"><i className="fa-solid fa-right-from-bracket mr-3"></i><Link to="./Adminlogin.html">LogOut</Link></button>
                   </div>  
 
 
