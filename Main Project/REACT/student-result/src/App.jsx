@@ -20,6 +20,7 @@ import ManageResult from './Pages/ManageResult';
 import AdminChangePwd from './Pages/AdminChangePwd';
 import UserDashBoard from './Pages/UserDashBoard';
 import Result from './Pages/Result';
+import UpdateSubComb from './Pages/UpdateSubComb';
 
 
 
@@ -50,8 +51,10 @@ function App() {
       <Route path='/ManageResult' element={<ManageResult/>}/>
       <Route path='/AdminChangePwd' element={<AdminChangePwd/>}/>
       <Route path='/userDashboard' element={<UserDashBoard/>}/>
-      <Route path='/result' element={<Result/>}/>
+      <Route path='/result/:id' element={<Result/>}/>
+      <Route path='/updateSubCombo/:id' element={<UpdateSubComb/>}/>
 
+    
       
 
 

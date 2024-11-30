@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Dashboard from '../Components/Dashboard';
 import img1 from "../assets/image/pexels-moose-photos-170195-1037995.jpg";
+import { Link } from 'react-router-dom';
+
 
 const ManageSubCombo = () => {
   const [datas, setDatas] = useState([]);
@@ -40,6 +42,8 @@ const ManageSubCombo = () => {
     }
   };
 
+  
+
   return (
     <>
       <div className="row md:flex md:justify-around align-center">
@@ -65,8 +69,11 @@ const ManageSubCombo = () => {
                     <td className="text-center p-5 border">{item.subject}</td>
                     <td className="text-center p-5 border">2024-02-16</td>
                     <td className="text-center p-5 border flex justify-between">
-                      <button onClick={() => handleDelete(item._id)}>
-                        <i className="fa-solid fa-xmark text-rose-600"></i>
+                    <button   className='bg-orange-600 text-white p-1 mr-5'>
+                       <Link to={`/updateSubCombo/${item._id}`} >Update</Link> 
+                      </button>
+                      <button onClick={() => handleDelete(item._id)} className='bg-rose-600 text-white p-1'>
+                        Delete
                       </button>
                     </td>
                   </tr>

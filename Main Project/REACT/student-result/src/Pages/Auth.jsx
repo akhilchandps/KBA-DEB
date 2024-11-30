@@ -39,6 +39,7 @@ const Auth = ({ register }) => {
 
          if(response.status == 200){
             alert(data.message)
+            localStorage.setItem("user",Username)
             navigate("/login")
 
          }else if(response.status ==400){

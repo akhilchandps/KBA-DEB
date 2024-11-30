@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import img from "../assets/image/security-camera-3174223_1280.jpg";
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 const UserDashBoard = () => {
 
@@ -51,8 +51,8 @@ const handleLogin= async(e)=>{
   console.log(setdata);
 
   if(res.ok){
-    localStorage.setItem("rollId",RollId)
     alert(setdata.message)
+    navigate(`/result/${RollId}`)
   }else{
     alert(setdata.message)
   }
@@ -69,7 +69,7 @@ const handleLogin= async(e)=>{
     <div className="row md:flex md:justify-around align-center">
       
 
-      <div className="col md:w-80 w-full  bg-[#024550] md:h-[101vh] h-[600px]">
+      <div className="col md:w-96 w-full  bg-[#024550] md:h-[101vh] h-[600px]">
           <div className="flex md:justify-between justify-center md:mt-14 mb-5 w-[165px] md:m-5">
             <div className="w-12">
               <img src="./image/uuuu.jpg" className="w-full rounded-full" alt=""/>
@@ -78,7 +78,7 @@ const handleLogin= async(e)=>{
           </div> 
           <hr/>
           <div className="dropdown flex flex-col items-center md:flex-row">
-            <button className="dropbtn md:text-xl text-sm font-bold  text-white "><i className="fa-solid fa-landmark mx-5 text-white"></i>Student classNamees</button>
+            <button className="dropbtn md:text-xl text-sm font-bold  text-white "><i className="fa-solid fa-landmark mx-5 text-white"></i>Student className</button>
             <div className="dropdown-content">
               <div>
               
@@ -92,7 +92,7 @@ const handleLogin= async(e)=>{
  
 
 
-      <div className="col w-full bg-cover md:bg-cover  "   style={{ backgroundImage: `url(${img})` }}>
+      <div className="col w-full bg-cover md:bg-cover  " style={{ backgroundImage: `url(${img})` }}>
           <div className=" flex justify-center ">
          
               <form onSubmit={handleLogin}  className="w-3/5 col bg-[rgba(255,255,255,0.8)] p-10 mt-20">
@@ -120,7 +120,7 @@ const handleLogin= async(e)=>{
                   </div>
   
                   <div className=" flex justify-end">
-                      <button className="bg-green-500 text-white px-3 py-1">Search</button>
+                      <button className="bg-green-500 text-white px-3 py-1">Search </button>
                   </div>
                   {/* <div>
                       <button className="bg-black text-white p-2"><a href="./home.html">Back to home</a></button>

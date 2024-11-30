@@ -90,8 +90,14 @@ const Subject = mongoose.model("Subjects", SubjectSchema)
 
 
 const subjectCombinationSchema = new mongoose.Schema({
-   class: String,
-   subject: String,
+   class: {
+      required:true,
+      type:String
+   },
+   subject:{
+      required:true,
+      type:String
+   }
 });
 
 const SubjectCombination = mongoose.model("SubjectCombinations", subjectCombinationSchema);
@@ -108,7 +114,7 @@ const SubjectCombination = mongoose.model("SubjectCombinations", subjectCombinat
 // const Result = mongoose.model("resultDetails", resultSchema)
 
 const resultSchema = new mongoose.Schema({
-   RollId: { type: String, required: true },
+   RollId: { type: String, required: true,unique:true },
    Class: { type: String, required: true },
    FullName: { type: String, required: true },
    Marks: [
@@ -654,6 +660,24 @@ adminRouter.post("/addSubjectCombination", authMiddileware, async (req, res) => 
    }
 });
 
+adminRouter.get("getOneSubComb/:id",  authMiddileware,  async(req,res)=>{
+  const {id} = req.params
+
+  const result = await SubjectCombination.findById(id)
+  try {
+   if(result){
+      res.status(200).json(result)
+     }else{
+      res.status(404).json({messgae:"Not Found"})
+     }
+  } catch (error) {
+   res.status(500).json({ message: "An error occurred", error });
+
+  }
+
+})
+
+
 adminRouter.get('/getSubjectClass/:id',async(req,res)=>{
    const classes= req.params.id
    const getClass = await SubjectCombination.find({class:classes})
@@ -682,18 +706,19 @@ adminRouter.get('/getSubjectCombinations',authMiddileware, async (req, res) => {
    }
  });
 
-adminRouter.patch("/UpdateAddSubjectCombination", authMiddileware, async (req, res) => {
+adminRouter.patch("/UpdateAddSubjectCombination/:id", authMiddileware, async (req, res) => {
+   const id = req.params.id;
    const { className, subjectName } = req.body;
 
    try {
       const result = await SubjectCombination.findOneAndUpdate(
-         { class: className, subject: subjectName },
+         {_id:id },
          { $set: { class: className, subject: subjectName } },
          { new: true }
       );
 
       if (result) {
-         res.status(200).json({ message: "SubjectCombination Updated" });
+         res.status(200).json({ message: "SubjectCombination Updated" ,result});
       } else {
          res.status(404).json({ message: "Subjectname or classname is not found" });
       }
@@ -852,6 +877,26 @@ adminRouter.post('/addResult', async (req, res) => {
      res.status(500).json({ error: 'Failed to declare result' });
    }
  });
+
+ //getResult
+
+ adminRouter.get("/getResultStudent/:id",async(req,res)=>{
+
+     const RollId = req.params.id  
+     
+     const result = await Result.findOne({RollId:RollId})
+     try{
+      if(result){
+         res.status(200).json(result)
+      }else{
+         res.status(404).json({message:"No results"})
+      }
+     }catch(error){
+      res.status
+     }
+ 
+
+ })
  
 
 
