@@ -17,7 +17,7 @@ const Dashboard = () => {
        if (res.ok) {
           const data = await res.json();
           alert(data.message || "Logged out successfully!");
-        
+          localStorage.removeItem("user");
         
            window.location.href = "/login";
        } else {

@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import Dashboard from '../Components/Dashboard'
 import img1 from "../assets/image/377105-PBR732-669.jpg"
 import img2 from "../assets/image/creative-7581718_1920.jpg"
@@ -7,6 +6,57 @@ import img3 from "../assets/image/creative-7581718_1920.jpg"
 import img4 from "../assets/image/texture-7515225_1920.jpg"
 const MainDashboard = () => {
 
+const [subject,setSubjects] = useState([])
+
+const [classes,setClass] = useState([])
+
+const [result,setResult] = useState([])
+
+
+  const getAllSubjects =async()=>{
+
+    const response = await fetch("http://127.0.0.1:5000/getSubjects",{
+      method:"GET",
+      credentials:"include",
+
+    })
+    console.log(response);
+
+    const data = await response.json();
+    console.log(data);
+    setSubjects(data)
+    
+    
+  }
+  const getAllclassName = async () => {
+    const response = await fetch("http://127.0.0.1:5000/getClasses", {
+      method: "GET",
+      credentials:"include"
+    });
+    console.log(response);
+    
+    const data = await response.json();
+    console.log(data);
+   setClass(data)
+  };
+
+  const getAllResult = async () => {
+    const response = await fetch("http://127.0.0.1:5000/getAllresult", {
+      method: "GET",
+      credentials:"include"
+    });
+    console.log(response);
+    
+    const data = await response.json();
+    console.log(data);
+   setResult(data)
+  };
+
+useEffect(()=>{
+  getAllSubjects();
+  getAllclassName();
+  getAllResult();
+},[])
 
   return (
     <div>
@@ -28,7 +78,7 @@ const MainDashboard = () => {
 
                 <div className="coll md:w-3/6 w-[300px] h-52 text-white md:text-2xl text-xl   m-auto  " style={{ backgroundImage: `url(${img2})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                   <ul>
-                    <li className="font-bold flex text-3xl  justify-end mt-12 mr-5 obj">10</li>
+                    <li className="font-bold flex text-3xl  justify-end mt-12 mr-5 obj">{subject.length}</li>
                     <li className="font-bold flex justify-end mt-12 mr-5 obj">Subjects Listed</li>
                   </ul>
              </div>
@@ -39,13 +89,13 @@ const MainDashboard = () => {
 
                 <div className="coll  md:w-3/6 w-[300px] h-52 text-white md:text-2xl text-xl  md:mr-12 m-auto bg-cover"  style={{ backgroundImage: `url(${img3})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                   <ul>
-                    <li className="font-bold flex text-3xl justify-end mt-12 mr-5">6</li>
-                    <li className="font-bold flex justify-end mt-12 mr-5">Total classNamees Listed</li>
+                    <li className="font-bold flex text-3xl justify-end mt-12 mr-5">{classes.length}</li>
+                    <li className="font-bold flex justify-end mt-12 mr-5">Total className Listed</li>
                   </ul>
                   </div>
                 <div className="coll bg-[url(https://cdn.pixabay.com/photo/2016/02/03/16/55/background-1177450_640.jpg)] md:w-3/6 w-[300px] h-52 text-white md:text-2xl text-xl  m-auto ">
                   <ul>
-                    <li className="font-bold flex text-3xl  justify-end mt-12 mr-5">4</li>
+                    <li className="font-bold flex text-3xl  justify-end mt-12 mr-5">{result.length}</li>
                     <li className="font-bold flex justify-end mt-12 mr-5">Results decalred</li>
                   </ul>
                 </div>        

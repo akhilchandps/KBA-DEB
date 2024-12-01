@@ -191,7 +191,10 @@ adminRouter.post('/login', async (req, res) => {
             console.log(token);
 
             res.cookie("AuthToken", token,{
-               httpOnly:true,
+               httpOnly: true, 
+               secure: true, 
+               sameSite: 'None',
+               maxAge: 3600000  
             });
 
             res.send({ message: "Login Successfull" })
@@ -821,6 +824,23 @@ adminRouter.get("/getResult/:stuname", authMiddileware, async (req, res) => {
    }
 
 })
+
+//getAllresults
+
+adminRouter.get("/getAllresult",authMiddileware, async(req,res)=>{
+   const result = await Result.find()
+   
+   try {
+      if(result){
+         res.status(200).json(result)
+      }
+   } catch (error) {
+      res.status(500).json(error)
+   }
+})
+
+
+
 
 
 //result login

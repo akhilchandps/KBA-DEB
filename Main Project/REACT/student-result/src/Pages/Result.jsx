@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import img from "../assets/image/ass.jpg";
 import jsPDF from "jspdf"; // Library for PDF generation
 import "jspdf-autotable";
+import img1 from "../assets/image/result.jpg"
 
 const Result = () => {
     const [name, setName] = useState("");
@@ -16,6 +17,7 @@ const Result = () => {
         const res = await fetch(`http://127.0.0.1:5000/getResultStudent/${id}`, {
             method: "GET",
         });
+        
         const data = await res.json();
         setName(data.FullName);
         setRollId(data.RollId);
@@ -26,6 +28,22 @@ const Result = () => {
     useEffect(() => {
         getResult();
     }, [id]);
+
+    if (!marks) {
+        return (
+            <div
+                className="main flex justify-center"
+                style={{ height: "120vh", backgroundImage: `url(${img1})`, backgroundSize: "cover" }}
+            >
+                <div className="mt-24 bg-[rgba(0,0,0,0.8)] h-52 px-5 py-5 backdrop-blur-sm md:px-20 md:py-8">
+                    <h2 className="text-white text-3xl text-center font-bold">Result Not Declared</h2>
+                </div>
+            </div>
+        );
+    }
+
+
+
 
     // Calculate total, percentage, and status
     const totalMarks = marks.reduce((acc, item) => acc + item.score, 0);

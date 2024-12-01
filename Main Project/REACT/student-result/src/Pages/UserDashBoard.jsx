@@ -39,27 +39,35 @@ const handleLogin= async(e)=>{
     className:classes
 
   }
-  const res = await fetch("http://127.0.0.1:5000/resultLogin",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify(userData)
-  })
-  console.log(res);
-  const setdata = await res.json()
-  console.log(setdata);
+   try {
+    const res = await fetch("http://127.0.0.1:5000/resultLogin",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(userData)
+    })
+    console.log(res);
+    const setdata = await res.json()
+    console.log(setdata);
+  
+    if(res.ok){
+      alert(setdata.message)
+      navigate(`/result/${RollId}`)
+    }else{
+      alert(setdata.message)
+    }
+   } catch (error) {
+    console.log(error);
+    
+   }
 
-  if(res.ok){
-    alert(setdata.message)
-    navigate(`/result/${RollId}`)
-  }else{
-    alert(setdata.message)
-  }
-  
-  
+
+
 
 }
+
+
 
 
 
@@ -83,7 +91,9 @@ const handleLogin= async(e)=>{
               <div>
               
               </div>
-            
+              {/* <div className="dropdown md:w-52 flex flex-col items-center md:justify-center  md:flex-row">
+                    <button onClick={handleLogout} className="dropbtn  md:text-xl text-sm  font-bold  text-white"><i className="fa-solid fa-right-from-bracket mr-3"></i><Link to="./Adminlogin.html">LogOut</Link></button>
+                  </div>   */}
             </div>
           </div>
 

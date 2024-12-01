@@ -1,6 +1,16 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
+import img from "../assets/image/hhh.jpg"
+import img2 from "../assets/image/green.jpg"
+import img3 from "../assets/image/note.jpg"
+import img4 from "../assets/image/art.jpg"
+
+
+
+
+
+
 import pencil from "../assets/image/architect-blueprint-sketched-with-pencil-paper-close-up-focus-generated-by-ai.jpg"
 const Home = () => {
   return (
@@ -28,7 +38,7 @@ const Home = () => {
         <div className="row md:flex justify-around m-5">
             <div className="col flex flex-col items-center m-5">
                 <div className="w-96 my-5 ">
-                    <img src="https://cdn.prod.website-files.com/662e2d8ec181679006f84e5d/664330130573dd7d8286f805_className%201-p-500.jpg" className="w-full" alt=""/>
+                    <img src={img2} className="w-full h-52 object-cover" alt=""/>
 
                 </div>
                 <h1 className="text-3xl font-bold my-5 text-[#024550]">Creative Writing</h1>
@@ -36,17 +46,17 @@ const Home = () => {
                 <p>Our classNamees are designed to accommodate writers of all levels, from beginners to seasoned professionals.</p>
                 
             </div>
-            <div className="col flex flex-col items-center m-5">
+            <div className="col flex flex-col items-center m-5 ">
                 <div  className="w-96 my-5">
-                    <img src="https://cdn.prod.website-files.com/662e2d8ec181679006f84e5d/66433330e6b3ade850c4f40d_className%203-p-500.jpg" className="w-full" alt=""/>
+                    <img src={img3} className="w-full h-52 object-cover" alt=""/>
                 </div>
                 <h1 className="text-3xl font-bold my-5 text-[#024550]">3D Graphics</h1>
                 <p className="text-justify">Dive into the captivating world of 3D graphics and unlock your creative potential with our comprehensive courses.</p>
             </div>
             
-            <div className="col flex flex-col items-center m-5">
+            <div className="col flex flex-col items-center m-5 ">
                 <div className="w-96 my-5">
-                    <img src="https://cdn.prod.website-files.com/662e2d8ec181679006f84e5d/664333bea4f2ea45f7bf3e2d_className%204-p-500.jpg" className="w-full" alt=""/>
+                    <img src={img4} className="w-full h-52 object-cover" alt=""/>
                 </div>
                <h1 className="text-3xl font-bold my-5 text-[#024550]">Art and Design</h1>
                <p  className="text-justify">Unleash your artistic talents and explore the boundless possibilities of visual expression with our Art and Design courses.</p>
@@ -83,7 +93,7 @@ const Home = () => {
         </div>
     <div className="col w-[100%]  m-5">
      
-            <img src="./image/hhh.jpg" alt="" className="w-full"/>  
+            <img src={img} alt="" className="w-full"/>  
     </div>
      </div>
       <Footer/>
