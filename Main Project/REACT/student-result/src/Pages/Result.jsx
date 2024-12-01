@@ -72,7 +72,7 @@ const Result = () => {
         <>
             <div
                 className="main flex justify-center"
-                style={{ height: "100vh", backgroundImage: `url(${img})`, backgroundSize: "cover" }}
+                style={{ height: "120vh", backgroundImage: `url(${img})`, backgroundSize: "cover" }}
             >
                 <div className="mt-5 bg-[rgba(0,0,0,0.8)] px-5 py-5 backdrop-blur-sm md:px-20 md:py-8">
                     <ul className="gap-5 list-style-none md:text-xl text-md text-white">

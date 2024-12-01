@@ -17,7 +17,7 @@ const Dashboard = () => {
        if (res.ok) {
           const data = await res.json();
           alert(data.message || "Logged out successfully!");
-           localStorage.clear();
+        
         
            window.location.href = "/login";
        } else {
@@ -39,7 +39,7 @@ const Dashboard = () => {
       
       <div className="col md:w-96 w-full  bg-[#024550] md:h-[115vh] h-[600px]">
             <div className="flex md:justify-between justify-center md:mt-14 mb-5 w-[165px] md:m-5">
-              <div className="w-96">
+              <div className="w-12">
                 <img src={cartoon} className="w-full rounded-full" alt=""/>
               </div>
               <Link to="/dashboard" className="text-3xl font-bold text-white text-center">{user}</Link>

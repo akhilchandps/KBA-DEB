@@ -660,7 +660,7 @@ adminRouter.post("/addSubjectCombination", authMiddileware, async (req, res) => 
    }
 });
 
-adminRouter.get("getOneSubComb/:id",  authMiddileware,  async(req,res)=>{
+adminRouter.get("/getOneSubComb/:id",  authMiddileware,  async(req,res)=>{
   const {id} = req.params
 
   const result = await SubjectCombination.findById(id)
