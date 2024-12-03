@@ -12,7 +12,6 @@ const CreateClass = () => {
 const navigate =useNavigate('');
 const [className,setClassName]=useState('')
 const [classNumeric,setClassNumeric]=useState('')
-const [Section,setSection]=useState('')
 const [Date,setDate]=useState('')
 
 
@@ -20,11 +19,10 @@ const [Date,setDate]=useState('')
 const handleClass=async(e)=>{
  
   e.preventDefault();
-  console.log(className,classNumeric,Section,Date);
+  console.log(className,classNumeric,Date);
   const newClass={
     className,
     classNumeric,
-    Section,
     Date
   }
   const response = await fetch("/api/createClass",{
@@ -94,17 +92,7 @@ const handleClass=async(e)=>{
               />
               <p className="text-gray-500">E.g., 2, 3, 4, 5</p>
             </div>
-            <label>Section</label>
-            <div className="my-3">
-              <input
-                onChange={(e) => setSection(e.target.value)}
-                type="text"
-                placeholder="section"
-                required
-                className="h-8 w-full pl-3 text-black"
-              />
-              <p className="text-gray-500">E.g., A, B, C</p>
-            </div>
+          
             <label>Date</label>
             <div className="my-3">
               <input

@@ -31,12 +31,18 @@ const User = mongoose.model("userDetails", userSchema)
 const classSchema = new mongoose.Schema({
 
    className: {
+      required:true,
       type: String,
       unique: true
    },
-   classNumeric: String,
-   Section: String,
-   Date: String
+   classNumeric: {
+      required:true,
+      type:String
+   },
+   Date: {
+      required:true,
+      type:String
+   }
 
 
 })
@@ -127,7 +133,7 @@ const resultSchema = new mongoose.Schema({
  
  const Result= mongoose.model('Result', resultSchema);
 
-mongoose.connect("mongodb://localhost:27017/Student-Result-Management")
+mongoose.connect("mongodb://mongodb:27017/Student-Result-Management")
 
 
 //signup
@@ -221,48 +227,34 @@ adminRouter.post('/login', async (req, res) => {
 
 })
 
+
+adminRouter.get("/getAllUsers",authMiddileware, async(req,res)=>{
+   const result = await User.find();
+   try {
+      if(result){
+         res.status(200).json(result)
+      }else{
+         res.status(400).json({message:"No users"})
+   
+      } 
+   } catch (error) {
+      res.status(500).json({message:error.message})
+   }
+
+})
+
+
+
+
 //create class
 
-// adminRouter.post("/createClass", async (req, res) => {
-
-//    const body = req.body
-//    const { className, classNumeric, Section, Date } = body
-//    console.log(className, classNumeric, Section, Date);
-
-//    const role = req.UserRole
-//    console.log(role);
-
-//    const existingClass = await Class.findOne({ className: className })
-
-//    try {
-
-//       if (existingClass) {
-//          res.status(403).json({ message: "Class Already Exist" })
-//       }else {
-//          const newClass = new Class({
-//             className: className,
-//             classNumeric: classNumeric,
-//             Section: Section,
-//             Date: Date
-//          })
-
-//          await newClass.save();
-
-//          res.status(201).json({ message: "Class Added", newClass })
-//       }
-//    } catch (error) {
-//       res.status(500).json(error)
-//    }
-
-
-// })
 
 
 adminRouter.post("/createClass", authMiddileware, async (req, res) => {
 
    const body = req.body
-   const { className, classNumeric, Section, Date } = body
-   console.log(className, classNumeric, Section, Date);
+   const { className, classNumeric, Date } = body
+   console.log(className, classNumeric, Date);
 
    const role = req.UserRole
    console.log(role);
@@ -280,7 +272,6 @@ adminRouter.post("/createClass", authMiddileware, async (req, res) => {
          const newClass = new Class({
             className: className,
             classNumeric: classNumeric,
-            Section: Section,
             Date: Date
          })
 
@@ -337,7 +328,7 @@ adminRouter.get("/getClass/:id", authMiddileware, async (req, res) => {
 
 adminRouter.put('/updateClass/:id',authMiddileware,async(req,res)=>{
    const { id } = req.params;
-const { className, classNumeric, Section, Date } = req.body
+const { className, classNumeric, Date } = req.body
 
     const result = await Class.findById(id)
      
@@ -349,7 +340,6 @@ const { className, classNumeric, Section, Date } = req.body
       if(req.UserRole =="Admin"){
          result.className = className || result.className
          result.classNumeric = classNumeric ||   result.classNumeric
-         result.Section = Section  ||   result.Section
          result.Date = Date || result.Date 
   
         await result.save();
@@ -402,7 +392,7 @@ adminRouter.post("/addStudent", authMiddileware, async (req, res) => {
    try {
        
       if(!getClass){
-         return res.status(404).json({message:"class name is found"})
+         return res.status(404).json({message:"class name is not added"})
       }
       if (existingStudentId) {
          return res.status(409).json({message:"Student ID Already Exist"})
@@ -888,11 +878,7 @@ adminRouter.post('/addResult', async (req, res) => {
      const { RollId, Class, FullName, Marks } = req.body;
  
      const result = await Result.findOne({RollId,RollId})
-     const result2 = await Result.findOne({Marks,Marks})
-   
-     if(!result2){
-      res.status(400).json({message:"Mark is not Added"})
-     }
+
      if(result){
       res.status(409).json({message:"Result Already Declared"})
      }else{
@@ -947,11 +933,10 @@ adminRouter.get('/viewUser',authMiddileware,(req,res)=>{
 adminRouter.get('/viewUsername',authMiddileware,(req,res)=>{
    try{
    const user=req.Username;
-   res.json({user});}
-   catch{
+   res.status(200).json(user)
+   } catch{
        res.status(404).json({message:'user not authorized'});
    }
 })
-
 export { adminRouter }
 

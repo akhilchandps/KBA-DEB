@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 const getUsername = () => {
 
 
-    const getUsername = async()=>{
+    const getUser = async()=>{
 
         const res = await fetch("http://127.0.0.1:5000/viewUsername",{
             method:"GET",
@@ -17,7 +17,7 @@ const getUsername = () => {
     }
           
     useEffect(()=>{
-        getUsername();
+        getUser();
     },[])
 
 

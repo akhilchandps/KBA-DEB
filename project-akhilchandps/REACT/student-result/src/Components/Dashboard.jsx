@@ -1,15 +1,34 @@
 import React, { useEffect, useState } from 'react';
-
 import cartoon from "../assets/image/3d-cartoon-portrait-person-practicing-law-related-profession.jpg";
 import { Link } from 'react-router-dom';
-import "../Components/Dashboard.css"
+import "../Components/Dashboard.css";
+
 const Dashboard = () => {
 
-  const [user,SetUser] = useState("")
+  const [user,setUser] =useState("")
+  
+
+  const fetchUser = async()=>{
+
+    const res = await fetch("/api/viewUsername",{
+      method:"GET",
+      credentials:"include"
+    })
+    console.log(res);
+    const data = await res.json()
+    console.log(data);
+    setUser(data)
+    
+    
+  }
+ useEffect(()=>{
+     fetchUser();
+ },[])
+
 
   const handleLogout = async () => {
     try {
-       const res = await fetch("http://127.0.0.1:5000/logout", {
+       const res = await fetch("/api/logout", {
           method: "POST", 
           credentials: "include", 
        });

@@ -5,9 +5,9 @@ import img1 from "../assets/image/result-3236285_1280.jpg";
 const AddResult = () => {
   const [allStudent, setAllStudent] = useState([]);
   const [rollid, setRollId] = useState("");
-  const [newClass,setNewClass] = useState("")
-  const [newName,setNewName] = useState("")
-  const [newSubjects,setNewSubjects] = useState([])
+  const [newClass,setNewClass] = useState("");
+  const [newName,setNewName] = useState("");
+  const [newSubjects,setNewSubjects] = useState([]);
   const [marks, setMarks] = useState({}); 
   
 

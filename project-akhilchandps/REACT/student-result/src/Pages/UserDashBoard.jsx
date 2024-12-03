@@ -10,7 +10,25 @@ const UserDashBoard = () => {
   const [classes,setClassName] = useState("")
  
   const navigate = useNavigate();
+  const [user,setUser] =useState("")
+  
 
+  const fetchUser = async()=>{
+
+    const res = await fetch("/api/viewUsername",{
+      method:"GET",
+      credentials:"include"
+    })
+    console.log(res);
+    const data = await res.json()
+    console.log(data);
+    setUser(data)
+    
+    
+  }
+ useEffect(()=>{
+     fetchUser();
+ },[])
 
   const getAllclassNamees = async () => {
     const response = await fetch("/api/getClasses", {
@@ -67,7 +85,27 @@ const handleLogin= async(e)=>{
 
 }
 
+const handleLogout = async () => {
+  try {
+     const res = await fetch("/api/logout", {
+        method: "POST", 
+        credentials: "include", 
+     });
 
+     if (res.ok) {
+        const data = await res.json();
+        alert(data.message || "Logged out successfully!");
+      
+         window.location.href = "/login";
+     } else {
+        console.error("Logout failed");
+        alert("Failed to log out. Please try again.");
+     }
+  } catch (error) {
+     console.error("Error logging out:", error);
+     alert("An unexpected error occurred. Please try again later.");
+  }
+};
 
 
 
@@ -82,18 +120,16 @@ const handleLogin= async(e)=>{
             <div className="w-12">
               <img src="./image/uuuu.jpg" className="w-full rounded-full" alt=""/>
             </div>
-            <a href="./Dashboard.html" className="text-3xl font-bold text-white text-center">User</a>
+            <a href="./Dashboard.html" className="text-3xl font-bold text-white text-center"><span className='ml-2 text-orange-600'>{user}</span>!</a>
           </div> 
           <hr/>
-          <div className="dropdown flex flex-col items-center md:flex-row">
-            <button className="dropbtn md:text-xl text-sm font-bold  text-white "><i className="fa-solid fa-landmark mx-5 text-white"></i>Student className</button>
+          <div className=" items-center md:flex-row">
+            <button onClick={handleLogout} className="dropbtn md:text-xl text-sm font-bold  text-white "><i className="fa-solid fa-right-from-bracket mr-3"></i>Log Out</button>
             <div className="dropdown-content">
               <div>
               
               </div>
-              {/* <div className="dropdown md:w-52 flex flex-col items-center md:justify-center  md:flex-row">
-                    <button onClick={handleLogout} className="dropbtn  md:text-xl text-sm  font-bold  text-white"><i className="fa-solid fa-right-from-bracket mr-3"></i><Link to="./Adminlogin.html">LogOut</Link></button>
-                  </div>   */}
+            
             </div>
           </div>
 

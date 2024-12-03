@@ -12,6 +12,8 @@ const [classes,setClass] = useState([])
 
 const [result,setResult] = useState([])
 
+const [users,setUser] = useState([])
+
 
   const getAllSubjects =async()=>{
 
@@ -52,10 +54,23 @@ const [result,setResult] = useState([])
    setResult(data)
   };
 
+  const getAllUsers = async () => {
+    const response = await fetch("/api/getAllUsers", {
+      method: "GET",
+      credentials:"include"
+    });
+    console.log(response);
+    
+    const data = await response.json();
+    console.log(data);
+   setUser(data)
+  };
+
 useEffect(()=>{
   getAllSubjects();
   getAllclassName();
   getAllResult();
+  getAllUsers();
 },[])
 
   return (
@@ -71,7 +86,7 @@ useEffect(()=>{
              <div className="roww md:flex  md:justify-center  md:mx-20 ">
                 <div className="coll md:w-3/6 w-[300px] h-52 text-white md:text-2xl text-xl md:mr-12 m-auto  " style={{ backgroundImage: `url(${img4})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                   <ul className="flex flex-col">
-                    <li className="font-bold flex text-3xl  justify-end mt-12 mr-5">14</li>
+                    <li className="font-bold flex text-3xl  justify-end mt-12 mr-5">{users.length-1}</li>
                     <li className="font-bold flex justify-end mt-12 mr-5">Reg Users</li>
                   </ul>
                 </div>
